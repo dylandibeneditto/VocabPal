@@ -4,9 +4,9 @@ VocabPal is a vocabulary helper app designed to enhance your word knowledge thro
 
 ## Features 
 
-- **Flashcards:** Get ready to dazzle your brain with some fancy flashcards!
-- **Quizzes:** Test your word wizardry with our not-so-serious quizzes.
-- **Efficient Learning:** Because we're all about learning, but also about having a good time.
+- **Flashcards:** Visualize and memorize vocabulary using interactive flashcards.
+- **Quizzes:** Test your knowledge with quizzes designed to reinforce your understanding.
+- **Efficient Learning:** Streamlined design for an efficient and enjoyable learning experience.
 
 ## Getting Started 
 
