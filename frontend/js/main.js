@@ -1,4 +1,3 @@
-import './style.css'
-import Experience from './experience'
+import Experience from './experience.js'
 
-const Experience = new Experience();
+const experience = new Experience()

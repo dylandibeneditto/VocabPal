@@ -1,0 +1,52 @@
+/* ROBOTO MONO INSTANTIATION */
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('../src/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf');
+}
+
+/* UNIVERSAL BACKGROUND AND UNIVERSAL FONT */
+* {
+    background-color: var(--bg);
+    font-family: 'Roboto Mono', Helvetica, sans-serif;
+}
+
+
+/* FONT SIZES */
+.t {
+    font-size: 2rem;
+}
+
+.t2 {
+    font-size: 1.75rem;
+}
+
+.h {
+    font-size: 1.3rem;
+    font-weight: bold
+}
+
+.sh {
+    font-size: 1.1rem;
+}
+
+.b {
+    font-size: .8rem;
+}
+
+.c {
+    font-size: .6rem;
+}
+
+/* STYLES */
+:root {
+    --bg: rgb(38, 39, 41);
+    --txt: rgb(223, 229, 240);
+    --p: rgb(5, 145, 252);
+    --s: rgb(0, 0, 0);
+}
+
+#test {
+    position: relative;
+    color: var(--txt);
+    font-weight: 600;
+}

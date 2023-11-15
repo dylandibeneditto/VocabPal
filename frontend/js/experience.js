@@ -1,3 +1,5 @@
+
+
 export default class Experience {
     static instance;
     constructor () {
@@ -5,6 +7,6 @@ export default class Experience {
             return Experience.instance
         }
         Experience.instance = this;
-        
+        console.log("hello")
     }
 }
