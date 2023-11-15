@@ -27,7 +27,7 @@ In order to get started, clone the repo and open the HTML file in a live server 
 
 2. Open the project folder in your code editor or IDE.
 
-3. Launch `frontend / index.html` in your dedicated live server
+3. Launch `frontend / html / index.html` in your dedicated live server
 
 ## License 
 
