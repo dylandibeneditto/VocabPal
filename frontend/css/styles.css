@@ -4,13 +4,17 @@
     src: url('../src/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf');
 }
 
-/* UNIVERSAL BACKGROUND AND UNIVERSAL FONT */
+/* UNIVERSAL FONT */
 * {
-    background-color: var(--bg);
+
     font-family: 'Roboto Mono', Helvetica, sans-serif;
     color: var(--txt);
 }
 
+/* BACKGROUND */
+html {
+    background-color: var(--bg);
+}
 
 /* FONT SIZES / STYLES */
 .t {
@@ -45,13 +49,18 @@
 
 /* STYLES */
 :root {
-    --bg: rgb(40, 37, 35);
-    --txt: rgb(240, 230, 223);
-    --p: rgb(254, 140, 40);
-    --s: rgb(0, 0, 0);
+    --bg: rgb(33 38 44);
+    --txt: rgb(173 186 199);
+    --p: rgb(233 117 91);
+    --s: rgb(44 52 59);
 }
 
-#test {
-    position: relative;
-    color: var(--txt);
+#content {
+    position: absolute;
+    height: 100vh;
+    width: fit-content;
+    top: 0;
+    padding: 0;
+    left: 50vw;
+    transform: translate(-50%, 0)
 }
