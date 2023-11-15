@@ -8,45 +8,50 @@
 * {
     background-color: var(--bg);
     font-family: 'Roboto Mono', Helvetica, sans-serif;
+    color: var(--txt);
 }
 
 
-/* FONT SIZES */
+/* FONT SIZES / STYLES */
 .t {
     font-size: 2rem;
+    font-weight: 600;
 }
 
 .t2 {
     font-size: 1.75rem;
+    font-weight: 400;
 }
 
 .h {
     font-size: 1.3rem;
-    font-weight: bold
+    font-weight: 600;
 }
 
 .sh {
     font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .b {
     font-size: .8rem;
+    font-weight: 400;
 }
 
 .c {
     font-size: .6rem;
+    font-weight: 400;
 }
 
 /* STYLES */
 :root {
-    --bg: rgb(38, 39, 41);
-    --txt: rgb(223, 229, 240);
-    --p: rgb(5, 145, 252);
+    --bg: rgb(40, 37, 35);
+    --txt: rgb(240, 230, 223);
+    --p: rgb(254, 140, 40);
     --s: rgb(0, 0, 0);
 }
 
 #test {
     position: relative;
     color: var(--txt);
-    font-weight: 600;
 }
