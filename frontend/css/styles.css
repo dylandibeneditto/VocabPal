@@ -69,6 +69,7 @@ html {
     --txt: rgb(242 239 237);
     --p: rgb(222 175 157);
     --s: rgb(79 62 61);
+    --t: rgb(35, 33, 33);
     --b: rgb(42, 39, 39);
 }
 
@@ -176,7 +177,7 @@ header {
 
 #mainWrap {
     width: auto;
-    height: 80vh;
+    height: 75vh;
     display: grid;
     grid-auto-flow: row;
     margin: 2rem;
@@ -190,13 +191,23 @@ header {
     width:100%;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 4fr 1fr;
     gap: 2rem;
 }
 
 .island {
-    padding: .3rem .4rem;
-    background: var(--b);
+    background: var(--t);
     border-radius: .6rem;
     border: 1px var(--s) solid;
+}
+
+#sidebar.notes {
+    left: 0;
+    top: 0;
+    margin: 0;
+    width: 20%;
+    height: 100%;
+    background: var(--b);
+    border-radius: .6rem;
+    border-right: 1px solid var(--s);
 }
