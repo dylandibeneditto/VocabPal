@@ -16,7 +16,7 @@ In order to get started, clone the repo and open the HTML file in a live server 
 ### Prerequisites
 
 - A web browser (most of them should be fine).
-- A code editor to explore the magic (I like Visual Studio Code, but you do you).
+- A code editor or IDE.
 
 ### Installing
 
