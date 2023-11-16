@@ -10,11 +10,21 @@
     src: url('../src/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf')
 }
 
+/* VARIABLE ICONS */
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 /* UNIVERSAL FONT */
 * {
 
     font-family: 'Bricolage Grotesque', Helvetica, sans-serif;
     color: var(--txt);
+    user-select: none;
 }
 
 /* BACKGROUND */
@@ -55,11 +65,17 @@ html {
 
 /* STYLES */
 :root {
-    --bg: rgb(28 28 29);
+    --bg: rgb(28, 27, 29);
     --txt: rgb(242 239 237);
     --p: rgb(222 175 157);
     --s: rgb(79 62 61);
     --b: rgb(37 34 35);
+}
+
+header {
+    display: flex;
+    gap: .5rem;
+    flex-direction: row;
 }
 
 #content {
@@ -79,10 +95,11 @@ html {
     height: fit-content;
     font-size: 2.5vmin;
     margin: .75vmin;
+    cursor: pointer;
 }
 
 #vTitle {
-    padding: .4vmin .6vmin;
+    padding: .3vmin .4vmin;
     margin-right: .5vmin;
     background: var(--p);
     border-radius: .6vmin;
@@ -93,4 +110,16 @@ html {
 #pTitle {
     margin: auto;
     font-weight: 700
+}
+
+.headerbtn {
+    margin: auto;
+    padding: .75vmin;
+    color: var(--s);
+    transition: .25s ease color;
+    font-size: 2vmin;
+}
+
+.headerbtn:hover {
+    color: var(--txt);
 }
