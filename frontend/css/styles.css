@@ -4,10 +4,16 @@
     src: url('../src/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf');
 }
 
+/* BRICOLAGE GROTESQUE INSTANTIATION */
+@font-face {
+    font-family: 'Bricolage Grotesque';
+    src: url('../src/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf')
+}
+
 /* UNIVERSAL FONT */
 * {
 
-    font-family: 'Roboto Mono', Helvetica, sans-serif;
+    font-family: 'Bricolage Grotesque', Helvetica, sans-serif;
     color: var(--txt);
 }
 
@@ -18,41 +24,42 @@ html {
 
 /* FONT SIZES / STYLES */
 .t {
-    font-size: 2rem;
+    font-size: 2vmin;
     font-weight: 600;
 }
 
 .t2 {
-    font-size: 1.75rem;
+    font-size: 1.75vmin;
     font-weight: 400;
 }
 
 .h {
-    font-size: 1.3rem;
+    font-size: 1.3vmin;
     font-weight: 600;
 }
 
 .sh {
-    font-size: 1.1rem;
+    font-size: 1.1vmin;
     font-weight: 500;
 }
 
 .b {
-    font-size: .8rem;
+    font-size: .8vmin;
     font-weight: 400;
 }
 
 .c {
-    font-size: .6rem;
+    font-size: .6vmin;
     font-weight: 400;
 }
 
 /* STYLES */
 :root {
-    --bg: rgb(33 38 44);
-    --txt: rgb(173 186 199);
-    --p: rgb(233 117 91);
-    --s: rgb(44 52 59);
+    --bg: rgb(28 28 29);
+    --txt: rgb(242 239 237);
+    --p: rgb(222 175 157);
+    --s: rgb(79 62 61);
+    --b: rgb(37 34 35);
 }
 
 #content {
@@ -63,4 +70,27 @@ html {
     padding: 0;
     left: 50vw;
     transform: translate(-50%, 0)
+}
+
+#title {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    height: fit-content;
+    font-size: 2.5vmin;
+    margin: .75vmin;
+}
+
+#vTitle {
+    padding: .4vmin .6vmin;
+    margin-right: .5vmin;
+    background: var(--p);
+    border-radius: .6vmin;
+    color: var(--bg);
+    font-weight: 700;
+}
+
+#pTitle {
+    margin: auto;
+    font-weight: 700
 }
