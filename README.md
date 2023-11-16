@@ -1,9 +1,10 @@
 # VocabPal 
 
-VocabPal is a vocabulary helper app designed to enhance your word knowledge through interactive flashcards and engaging tests.
+Experience streamlined learning with VocabPal, a sophisticated app designed for efficient memorization and note-taking. Its minimalist design fosters a professional and focused environment, eliminating unnecessary distractions. Seamlessly integrate dynamic features like flashcards and tests to elevate your learning journey with VocabPal.
 
 ## Features 
 
+- **Integrated Note-taking:** Seamlessly capture lecture details while effortlessly transforming key vocabulary into interactive flashcards
 - **Flashcards:** Visualize and memorize vocabulary using interactive flashcards.
 - **Quizzes:** Test your knowledge with quizzes designed to reinforce your understanding.
 - **Efficient Learning:** Streamlined design for an efficient and enjoyable learning experience.
