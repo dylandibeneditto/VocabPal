@@ -78,6 +78,7 @@ header {
     margin: 1rem;
     border-radius: 1rem;
     background-color: var(--b);
+    border: 1px var(--s) solid;
 }
 
 #content {
@@ -171,4 +172,31 @@ header {
 .spacer {
     box-sizing: border-box;
     width: 1fr;
+}
+
+#mainWrap {
+    width: auto;
+    height: 80vh;
+    display: grid;
+    grid-auto-flow: row;
+    margin: 2rem;
+    margin-bottom: 0;
+    gap: 2rem;
+    grid-template-rows: 3fr 1fr;
+}
+
+#noteWrap {
+    height: 100%;
+    width:100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+}
+
+.island {
+    padding: .3rem .4rem;
+    background: var(--b);
+    border-radius: .6rem;
+    border: 1px var(--s) solid;
 }
