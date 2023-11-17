@@ -74,6 +74,8 @@ html {
     --b: rgb(42, 39, 39);
 }
 
+/* HEADER */
+
 header {
     display: flex;
     flex-direction: row;
@@ -176,6 +178,8 @@ header {
     width: 1fr;
 }
 
+/* MAIN VIEW */
+
 #mainWrap {
     width: auto;
     height: 75vh;
@@ -197,15 +201,21 @@ header {
 }
 
 .island {
-    background: var(--t);
+    background: var(--b);
     border-radius: .6rem;
     border: 1px var(--s) solid;
 }
+
+/* NOTES ISLAND */
 
 .notes {
     margin: 0;
     padding: 0;
     width: 100%;
+}
+
+#notes {
+    background-color: var(--t);
 }
 
 #sidebar.notes {
@@ -262,14 +272,19 @@ header {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns : auto 1fr auto;
-    transition: color, background-color, border .25s ease;
+    transition: all .25s ease;
+    border-radius: .4rem;
 }
 
 .noteListItem.active {
     color: var(--txt) !important;
-    background: var(--s);
-    border-radius: .4rem;
+    background-color: var(--s);
+
     border: 1px var(--p) solid;
+}
+
+.noteListItem:hover {
+    background-color: var(--s);
 }
 
 .noteListItemTitle {
@@ -288,4 +303,55 @@ header {
     color: var(--txta);
     padding: .2rem;
     width: fit-content;
+}
+
+/* STYLES ISLAND */
+
+#styles {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stylesT {
+    padding: .6rem 1rem;
+    color: var(--txta);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.styles {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.styleObj {
+    padding: .6rem 1rem;
+    margin: 0 .5rem;
+    border-radius: .4rem;
+    background: var(--t);
+    transition: all .25s ease;
+}
+
+.styleObj:hover {
+    background: var(--s);
+}
+
+.styleObj.active {
+    background: var(--s);
+    border: 1px solid var(--p);
+}
+
+#header1.styleObj {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+#header2.styleObj {
+    font-size: 1.25rem
+}
+
+#monospace.styleObj {
+    font-family: 'Roboto Mono';
 }
