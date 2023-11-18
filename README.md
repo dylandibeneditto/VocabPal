@@ -36,5 +36,5 @@ This project is licensed under the MIT License
 
 ## Contact 
 
-For any inquiries, please contact Dylan DiBeneditto at **dibenedittod@gmail.com**.
+For any inquiries, please contact me at **dibenedittod@gmail.com**.
 
