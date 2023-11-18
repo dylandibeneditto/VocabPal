@@ -384,3 +384,65 @@ header {
 .checkbox:hover {
     background-color: var(--txt);
 }
+
+#analytics {
+    display: flex;
+    flex-direction: column;
+}
+
+#cardMastery {
+    padding: .2rem;
+    width: 10rem;
+    height: 10rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cardMasteryT {
+    margin: auto;
+}
+
+.meter {
+    width: max-content;
+    height: max-content;
+    position: absolute !important;
+}
+
+.meterBg {
+    background: conic-gradient(var(--s) 60deg, var(--t) 0deg);
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.meterPlug {
+    z-index: 2;
+    background: var(--b);
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.meterTitle {
+    z-index: 3;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.meterSubtitle {
+    font-size: .8rem;
+    color: var(--p);
+    margin: 0;
+    transform: translate(0,-50%);
+}
+
+#cardMasteryNum {
+    margin: 0;
+}
+
+#masteryWheel {
+    background: conic-gradient(var(--p) 18deg, rgba(0,0,0,0) 0deg);
+    z-index: 1;
+}
