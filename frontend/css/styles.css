@@ -385,9 +385,15 @@ header {
     background-color: var(--txt);
 }
 
-#analytics {
+#flashcardList {
     display: flex;
     flex-direction: column;
+}
+
+#analytics {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #cardMastery {
@@ -410,10 +416,11 @@ header {
 }
 
 .meterBg {
-    background: conic-gradient(var(--s) 60deg, var(--t) 0deg);
+    background: conic-gradient(var(--s) 180deg, var(--t) 0deg, var(--t) 300deg, rgba(0,0,0,0) 0deg);
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
+    transform: rotate(-150deg);
 }
 
 .meterPlug {
@@ -445,4 +452,21 @@ header {
 #masteryWheel {
     background: conic-gradient(var(--p) 18deg, rgba(0,0,0,0) 0deg);
     z-index: 1;
+}
+
+#masteryDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.masteryDetail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr auto;
+    padding: .3rem .4rem;
+    width: 7.5rem;
+    background-color: var(--t);
+    border-radius: .4rem;
 }
