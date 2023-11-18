@@ -514,3 +514,23 @@ header {
     background-color: var(--s);
 }
 
+#flashcardPreview {
+    display: flex;
+    flex-direction: row;
+}
+
+#previewMove {
+    display: flex;
+    flex-direction: column;
+}
+
+#flashcard {
+    width: 20rem;
+    height: 88%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: .4rem;
+    background-color: var(--t);
+    
+}
