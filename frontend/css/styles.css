@@ -397,8 +397,7 @@ header {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    margin: 1rem;
-    margin-top: 0;
+    margin: 0 0 1rem 1rem;
 }
 
 #cardMastery {
@@ -488,8 +487,8 @@ header {
 #flashcardWrap {
     display: grid;
     grid-auto-flow: column;
-    gap: 2rem;
     justify-content: center;
+    grid-template-columns: 1fr 1fr;
 }
 
 #flashcardTests {
@@ -517,9 +516,11 @@ header {
 }
 
 #flashcardPreview {
-    display: flex;
-    flex-direction: row;
+    width:100%;
+    display: grid;
+    grid-auto-flow: column;
     align-content: center;
+    grid-template-columns: auto 1fr auto;
     gap: 1rem;
 }
 
@@ -532,7 +533,6 @@ header {
 }
 
 #flashcard {
-    width: 20rem;
     height: 88%;
     justify-content: center;
     align-items: center;
