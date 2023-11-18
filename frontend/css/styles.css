@@ -388,12 +388,15 @@ header {
 #flashcardList {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 #analytics {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 1rem;
+    margin: 1rem;
 }
 
 #cardMastery {
@@ -457,7 +460,7 @@ header {
 #masteryDetail {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .8rem;
     justify-content: center;
 }
 
@@ -465,8 +468,49 @@ header {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: auto 1fr auto;
-    padding: .3rem .4rem;
+    padding: .4rem .5rem;
     width: 7.5rem;
     background-color: var(--t);
     border-radius: .4rem;
+    font-size: 1.1rem;
 }
+
+#masteredDetail {
+    border: 1px var(--p) solid;
+}
+
+#learnedDetail {
+    border: 1px var(--s) solid;
+}
+
+#analyticsT {
+    font-size: 1.5rem;
+    padding: .6rem 1rem;
+}
+
+#flashcardWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+#flashcardTests {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.tests {
+    padding: .4rem .5rem;
+    font-size: 1.1rem;
+    background: var(--t);
+    cursor: pointer;
+    border-radius: .4rem;
+    width: 7.5rem;
+    transition: all .25s ease;
+}
+
+.tests:hover {
+    background-color: var(--s);
+}
+
