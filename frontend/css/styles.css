@@ -398,6 +398,7 @@ header {
     align-items: center;
     gap: 1rem;
     margin: 1rem;
+    margin-top: 0;
 }
 
 #cardMastery {
@@ -484,15 +485,11 @@ header {
     border: 1px var(--s) solid;
 }
 
-#analyticsT {
-    font-size: 1.5rem;
-    padding: .6rem 1rem;
-}
-
 #flashcardWrap {
     display: grid;
     grid-auto-flow: column;
     gap: 2rem;
+    justify-content: center;
 }
 
 #flashcardTests {
@@ -522,7 +519,6 @@ header {
 #flashcardPreview {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-content: center;
     gap: 1rem;
 }
@@ -589,4 +585,17 @@ header {
     color: var(--p);
     transform: translate(0,-30%);
     font-size: .8rem;
+}
+
+#analyticsWrap {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#analyticsT {
+    padding: .6rem 1rem;
+    padding-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
