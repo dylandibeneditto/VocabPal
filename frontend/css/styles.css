@@ -402,8 +402,8 @@ header {
 
 #cardMastery {
     padding: .2rem;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -420,7 +420,7 @@ header {
 }
 
 .meterBg {
-    background: conic-gradient(var(--s) 180deg, var(--t) 0deg, var(--t) 300deg, rgba(0,0,0,0) 0deg);
+    background: conic-gradient(var(--s) 270deg, var(--t) 0deg, var(--t) 300deg, rgba(0,0,0,0) 0deg);
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
@@ -493,7 +493,6 @@ header {
     display: grid;
     grid-auto-flow: column;
     gap: 2rem;
-    grid-template-columns: auto 1fr auto auto;
 }
 
 #flashcardTests {
@@ -502,6 +501,7 @@ header {
     gap: .8rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin: .8rem;
 }
 
 .tests {
@@ -512,6 +512,7 @@ header {
     border-radius: .4rem;
     width: 7.5rem;
     transition: all .25s ease;
+    border: 1px var(--s) solid;
 }
 
 .tests:hover {
@@ -523,6 +524,7 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
+    gap: 1rem;
 }
 
 #previewMove {
@@ -531,7 +533,6 @@ header {
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1rem;
 }
 
 #flashcard {
@@ -544,6 +545,7 @@ header {
     background-color: var(--t);
     border: 1px var(--s) solid;
     cursor: alias;
+    margin: auto 0;
 }
 
 .previewbtn {
@@ -558,4 +560,33 @@ header {
 
 .previewbtn:hover {
     color: var(--txt);
+}
+
+#finalScore {
+    width: 8rem;
+    height: 8rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nonRangeData {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.score {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: .6rem 1rem;
+    background: var(--t);
+    border-radius: .4rem;
+    border: 1px var(--s) solid;
+}
+
+.scoreSubT {
+    color: var(--p);
+    transform: translate(0,-30%);
+    font-size: .8rem;
 }
