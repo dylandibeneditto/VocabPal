@@ -63,17 +63,6 @@ html {
     font-weight: 400;
 }
 
-/* STYLES */
-:root {
-    --bg: rgb(28, 27, 29);
-    --txt: rgb(242 239 237);
-    --p: rgb(222 175 157);
-    --s: rgb(79 62 61);
-    --t: rgb(35, 33, 33);
-    --txta: rgb(113, 109, 107);
-    --b: rgb(42, 39, 39);
-}
-
 /* HEADER */
 
 header {
@@ -610,15 +599,21 @@ header {
 
 footer {
     position: absolute;
+    width: 100%;
     bottom: 0;
     left: 0;
     display: grid;
     grid-auto-flow: column;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 1rem 0;
     justify-content: center;
+    grid-template-columns: auto 1fr auto;
 }
 
+#footbtns {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
 
 .footbtn {
     font-size: .8rem;
