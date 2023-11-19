@@ -182,7 +182,7 @@ header {
 
 #mainWrap {
     width: auto;
-    height: 75vh;
+    height: 90vh;
     display: grid;
     grid-auto-flow: row;
     margin: 1.75rem;
@@ -420,7 +420,7 @@ header {
 }
 
 .meterBg {
-    background: conic-gradient(var(--s) 270deg, var(--t) 0deg, var(--t) 300deg, rgba(0,0,0,0) 0deg);
+    background: conic-gradient(var(--p) 270deg, var(--t) 0deg, var(--t) 300deg, rgba(0,0,0,0) 0deg);
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
@@ -451,6 +451,10 @@ header {
 
 #cardMasteryNum {
     margin: 0;
+}
+
+#learningWheel {
+    background: conic-gradient(var(--s) 270deg, var(--t) 0deg, var(--t) 300deg, rgba(0,0,0,0) 0deg);
 }
 
 #masteryWheel {
@@ -602,4 +606,33 @@ header {
     padding-bottom: 0;
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-auto-flow: column;
+    padding: 1rem;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.footbtn > * {
+    color: var(--txta);
+}
+
+.footbtn {
+    font-size: .8rem;
+    text-decoration: none;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: .2rem;
+    transition: all .25s ease;
+}
+
+.footicon {
+    font-size: 1rem;
 }
