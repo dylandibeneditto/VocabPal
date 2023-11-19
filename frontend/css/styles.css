@@ -68,7 +68,7 @@ html {
 header {
     display: flex;
     flex-direction: row;
-    margin: 1rem;
+    margin: 1rem 0;
     border-radius: 1rem;
     background-color: var(--b);
     border: 1px var(--s) solid;
@@ -82,7 +82,10 @@ header {
     top: 0;
     padding: 0;
     left: 50vw;
-    transform: translate(-50%, 0)
+    transform: translate(-50%, 0);
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto 1fr auto;
 }
 
 #title {
@@ -171,13 +174,11 @@ header {
 
 #mainWrap {
     width: auto;
-    height: 90vh;
+    height: 100%;
     display: grid;
     grid-auto-flow: row;
-    margin: 1.75rem;
-    margin-bottom: 0;
-    gap: 1.75rem;
-    grid-template-rows: 3fr 1fr;
+    gap: 1rem;
+    grid-template-rows: 3fr auto;
 }
 
 #noteWrap {
@@ -186,7 +187,7 @@ header {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 4fr 1fr;
-    gap: 1.75rem;
+    gap: 1rem;
 }
 
 .island {
@@ -598,13 +599,13 @@ header {
 }
 
 footer {
-    position: absolute;
+    position: relative;
     width: 100%;
-    bottom: 0;
     left: 0;
     display: grid;
     grid-auto-flow: column;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
+    padding-bottom: 1rem;
     justify-content: center;
     grid-template-columns: auto 1fr auto;
 }
@@ -622,6 +623,7 @@ footer {
     display: flex;
     flex-direction: row;
     gap: .2rem;
+    cursor: pointer;
 }
 
 .footbtn > * {
