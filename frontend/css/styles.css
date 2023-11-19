@@ -619,9 +619,6 @@ footer {
     justify-content: center;
 }
 
-.footbtn > * {
-    color: var(--txta);
-}
 
 .footbtn {
     font-size: .8rem;
@@ -630,7 +627,15 @@ footer {
     display: flex;
     flex-direction: row;
     gap: .2rem;
+}
+
+.footbtn > * {
+    color: var(--s);
     transition: all .25s ease;
+}
+
+.footbtn:hover > * {
+    color: var(--txt);
 }
 
 .footicon {
