@@ -689,3 +689,7 @@ footer {
     padding: 1rem;
     box-sizing: border-box;
 }
+
+div.monospace {
+    font-family: 'Roboto Mono';
+}
