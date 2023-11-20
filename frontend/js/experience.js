@@ -1,4 +1,4 @@
-
+import NoteEditor from './note-editor.js'
 
 export default class Experience {
     static instance;
@@ -7,6 +7,6 @@ export default class Experience {
             return Experience.instance
         }
         Experience.instance = this;
-        console.log("hello")
+        this.noteEditor = new NoteEditor(document.getElementById("noteEditor"));
     }
 }
