@@ -363,24 +363,6 @@ header {
     background: var(--s);
 }
 
-.styleObj.active {
-    background: var(--pb);
-    border: 1px solid var(--p);
-}
-
-#header1.styleObj {
-    font-size: 1.6rem;
-    font-weight: 500;
-}
-
-#header2.styleObj {
-    font-size: 1.25rem
-}
-
-#monospace.styleObj {
-    font-family: 'Roboto Mono';
-}
-
 .listHl {
     margin: auto;
     height: .5rem;
