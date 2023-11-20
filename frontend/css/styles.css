@@ -88,6 +88,11 @@ html {
     background: var(--p);
 }
 
+::selection {
+    background-color: var(--p);
+    color: var(--bg);
+}
+
 /* HEADER */
 
 header {
