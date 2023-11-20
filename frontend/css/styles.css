@@ -76,8 +76,8 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background: var(--b);
-    border-top-right-radius: .4rem;
-    border-bottom-right-radius: .4rem;
+    border-top-right-radius: .6rem;
+    border-bottom-right-radius: .6rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
