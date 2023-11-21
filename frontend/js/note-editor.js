@@ -20,7 +20,7 @@ export default class NoteEditor {
             console.log(e.key);
             if (e.key == '/') {
                 this.showCommandBar();
-            } else if (e.key == ' ' || e.key == 'Enter') {
+            } else if (e.key == ' ' || e.key == 'Enter' || e.key == 'Backspace') {
                 this.hideCommandBar();
             }
         })

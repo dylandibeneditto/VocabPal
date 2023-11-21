@@ -669,6 +669,7 @@ footer {
     outline: none;
     padding: 1rem;
     box-sizing: border-box;
+    height: 100%;
 }
 
 div.monospace {
