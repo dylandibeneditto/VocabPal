@@ -665,7 +665,6 @@ footer {
 }
 
 #noteEditor {
-    flex: 1;
     overflow: auto;
     outline: none;
     padding: 1rem;
@@ -677,5 +676,17 @@ div.monospace {
 }
 
 #suggestions {
-    position: absolute;
-}
+    display: none;
+    border-top: 1px solid var(--s);
+    border-bottom: 1px solid var(--s);
+    max-height: 10rem;
+    overflow-y: auto;
+    width: 100%;
+    background-color: var(--b);
+    box-sizing: border-box;
+  }
+
+  .suggestion {
+    padding: .8rem;
+    cursor: pointer;
+  }
