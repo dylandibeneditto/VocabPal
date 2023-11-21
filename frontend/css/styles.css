@@ -675,3 +675,7 @@ footer {
 div.monospace {
     font-family: 'Roboto Mono';
 }
+
+#suggestions {
+    position: absolute;
+}
