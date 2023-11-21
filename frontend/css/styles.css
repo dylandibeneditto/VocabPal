@@ -685,9 +685,14 @@ div.monospace {
     width: 100%;
     background-color: var(--b);
     box-sizing: border-box;
-  }
+}
 
-  .suggestion {
+.suggestion {
     padding: .8rem;
     cursor: pointer;
-  }
+}
+
+#suggestionT {
+    font-size: .5rem;
+    font-weight: 500;
+}
