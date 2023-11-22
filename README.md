@@ -32,7 +32,7 @@ In order to get started, clone the repo and open the HTML file in a live server 
 
 ## License 
 
-This project is licensed under the MIT License
+This project is licensed under the Apache 2.0 License
 
 ## Contact 
 
