@@ -719,6 +719,11 @@ div.monospace {
     color: var(--txta);
 }
 
-h1 {
-    margin: 1rem 0;
+#noteT {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1rem;
+    outline: none;
+    overflow: hidden;
+    box-sizing: border-box;
 }

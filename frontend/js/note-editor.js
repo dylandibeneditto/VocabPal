@@ -1,13 +1,19 @@
-
+import Experience from './experience.js'
 
 export default class NoteEditor {
     constructor(p) {
+        this.experience = new Experience()
         this.p = p;
+        this.title = document.getElementById("noteT");
         this.selection = window.getSelection();
         this.text = 0;
-        this.suggestionBox = document.getElementById("suggestions")
+        this.suggestionBox = document.getElementById("suggestions");
         this.suggestions = ['head1', 'head2', 'mono', 'fc', 'list-fc'];
-        this.suggestionDesc = ['header 1', 'header 2', 'monospace', 'create new flashcard', 'create new flashcard w/ list']
+        this.suggestionDesc = ['header 1', 'header 2', 'monospace', 'create new flashcard', 'create new flashcard w/ list'];
+        this.initListeners()
+    }
+
+    initListeners() {
         document.getElementById("header1").addEventListener("mousedown", () => {
             this.addRich("h1");
         })
@@ -17,8 +23,13 @@ export default class NoteEditor {
         document.getElementById("monospace").addEventListener("mousedown", () => {
             this.addMonospace()
         })
+        this.title.addEventListener("keydown", (e)=> {
+            if(e.key == "Enter") {
+                e.preventDefault();
+            }
+            this.experience.notes.updateTitle(this.title.innerHTML)
+        })
         this.p.addEventListener("keydown", (e) => {
-            console.log(e.key);
             if (e.key == '/') {
                 this.showCommandBar();
             } else if (e.key == ' ' || e.key == 'Enter' || e.key == 'Backspace') {
@@ -28,22 +39,16 @@ export default class NoteEditor {
     }
 
     addRich(name) {
-
         if (this.selection.rangeCount > 0) {
             const range = this.selection.getRangeAt(0);
             const selectedNode = range.commonAncestorContainer;
-            console.log(selectedNode.parentElement);
-
             if (selectedNode.nodeType === Node.TEXT_NODE) {
                 const parentElement = selectedNode.parentElement;
-                console.log(parentElement.nodeName)
                 if (parentElement.nodeName === name.toLocaleUpperCase()) {
-                    console.log(2)
                     const textNode = document.createTextNode(parentElement.innerText);
                     parentElement.parentNode.replaceChild(textNode, parentElement);
                 } else {
                         if (parentElement.parentElement === this.p) {
-                        console.log(3)
                         const element = document.createElement(name);
                         element.appendChild(document.createTextNode(selectedNode.nodeValue));
                         selectedNode.remove()
@@ -94,17 +99,14 @@ export default class NoteEditor {
                 e.appendChild(ed);
                 e.classList.add("suggestion");
                 this.suggestionBox.appendChild(e);
-                console.log(e);
             }
             this.suggestionBox.style.display = 'flex';
-            console.log(this.selection);
             range.deleteContents()
             range.insertNode(this.suggestionBox);
         }
     }
 
     hideCommandBar() {
-        //        this.suggestionBox.innerHTML = '';
         this.suggestionBox.style.display = 'none';
     }
 
