@@ -36,18 +36,20 @@ export default class NoteEditor {
 
             if (selectedNode.nodeType === Node.TEXT_NODE) {
                 const parentElement = selectedNode.parentElement;
-
-                // Toggle between h1 and normal text
-                if (parentElement.nodeName === name) {
+                console.log(parentElement.nodeName)
+                if (parentElement.nodeName === name.toLocaleUpperCase()) {
+                    console.log(2)
                     const textNode = document.createTextNode(parentElement.innerText);
                     parentElement.parentNode.replaceChild(textNode, parentElement);
                 } else {
-                    // Wrap the selected line in an h1 element
-                    const element = document.createElement(name);
-                    element.appendChild(document.createTextNode(selectedNode.nodeValue));
-                    selectedNode.remove()
-                    range.deleteContents();
-                    range.insertNode(element);
+                        if (parentElement.parentElement === this.p) {
+                        console.log(3)
+                        const element = document.createElement(name);
+                        element.appendChild(document.createTextNode(selectedNode.nodeValue));
+                        selectedNode.remove()
+                        range.deleteContents();
+                        range.insertNode(element);
+                    }
                 }
             }
         }
@@ -79,25 +81,25 @@ export default class NoteEditor {
     showCommandBar() {
         if (this.selection.rangeCount > 0) {
             const range = this.selection.getRangeAt(0);
-                for(let i=0;i<this.suggestions.length;i++) {
-                    const e = document.createElement(this.suggestions[i]);
-                    const es = document.createElement('div');
-                    es.classList.add("suggestionKey");
-                    es.innerHTML = this.suggestions[i];
-                    e.appendChild(es);
-                    e.appendChild(document.createElement('div'));
-                    const ed = document.createElement('div');
-                    ed.classList.add("suggestionDesc");
-                    ed.innerHTML = this.suggestionDesc[i];
-                    e.appendChild(ed);
-                    e.classList.add("suggestion");
-                    this.suggestionBox.appendChild(e);
-                    console.log(e);
-                }
-                this.suggestionBox.style.display = 'flex';
-                console.log(this.selection);
-                range.deleteContents()
-                range.insertNode(this.suggestionBox);
+            for (let i = 0; i < this.suggestions.length; i++) {
+                const e = document.createElement(this.suggestions[i]);
+                const es = document.createElement('div');
+                es.classList.add("suggestionKey");
+                es.innerHTML = this.suggestions[i];
+                e.appendChild(es);
+                e.appendChild(document.createElement('div'));
+                const ed = document.createElement('div');
+                ed.classList.add("suggestionDesc");
+                ed.innerHTML = this.suggestionDesc[i];
+                e.appendChild(ed);
+                e.classList.add("suggestion");
+                this.suggestionBox.appendChild(e);
+                console.log(e);
+            }
+            this.suggestionBox.style.display = 'flex';
+            console.log(this.selection);
+            range.deleteContents()
+            range.insertNode(this.suggestionBox);
         }
     }
 

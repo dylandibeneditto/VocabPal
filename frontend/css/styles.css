@@ -706,6 +706,10 @@ div.monospace {
     color: var(--b);
 }
 
+.suggestion > * {
+    font-size: 1rem !important;
+}
+
 .suggestionKey {
     font-family: 'Roboto Mono';
     font-weight: 500;
@@ -713,4 +717,8 @@ div.monospace {
 
 .suggestionDesc {
     color: var(--txta);
+}
+
+h1 {
+    margin: 1rem 0;
 }
