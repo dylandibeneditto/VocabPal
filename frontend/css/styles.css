@@ -678,21 +678,19 @@ div.monospace {
 
 #suggestions {
     display: none;
-    border-top: 1px solid var(--s);
-    border-bottom: 1px solid var(--s);
-    max-height: 10rem;
+    border: 1px solid var(--s);
+    border-radius: .6rem;
+    max-height: 8rem;
     overflow-y: auto;
     width: 100%;
     background-color: var(--b);
+    opacity: .9;
     box-sizing: border-box;
+    padding: .8rem;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .suggestion {
-    padding: .8rem;
     cursor: pointer;
-}
-
-#suggestionT {
-    font-size: .5rem;
-    font-weight: 500;
 }

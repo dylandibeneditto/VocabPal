@@ -6,7 +6,8 @@ export default class NoteEditor {
         this.selection = window.getSelection();
         this.text = 0;
         this.suggestionBox = document.getElementById("suggestions")
-        this.suggestions = ['Apple', 'Banana', 'Orange', 'Pineapple', 'Grapes'];
+        this.suggestions = ['h1', 'h2', 'mono', 'fc', 'list-fc'];
+        this.suggestionDesc = ['header 1', 'header 2', 'monospace', 'create new flashcard', 'create new flashcard w/ list']
         document.getElementById("header1").addEventListener("mousedown", () => {
             this.addRich("h1");
         })
@@ -76,27 +77,24 @@ export default class NoteEditor {
     }
 
     showCommandBar() {
-        const textBeforeCursor = this.p.innerText.substring(0, this.selection.getRangeAt(0).startOffset);
-        const lastWord = textBeforeCursor.split(/\s+/).pop();
-
-        const matchingSuggestions = this.suggestions.filter(suggestion =>
-            suggestion.toLowerCase().startsWith(lastWord.toLowerCase())
-        );
-
-        if (matchingSuggestions.length > 0) {
-            const suggestionHTML = matchingSuggestions.map(suggestion =>
-                `<div id="${suggestion}" class="suggestion">${suggestion}</div>`
-            ).join('');
-
-            this.suggestionBox.innerHTML = suggestionHTML;
-            this.suggestionBox.style.display = 'block';
-        } else {
-            this.hideCommandBar();
+        if (this.selection.rangeCount > 0) {
+            const range = this.selection.getRangeAt(0);
+                for(let i=0;i<this.suggestions.length;i++) {
+                    const e = document.createElement('div');
+                    e.classList.add("suggestion");
+                    e.innerHTML = this.suggestions[i];
+                    this.suggestionBox.appendChild(e);
+                    console.log(e);
+                }
+                this.suggestionBox.style.display = 'flex';
+                console.log(this.selection);
+                range.deleteContents()
+                range.insertNode(this.suggestionBox);
         }
     }
 
     hideCommandBar() {
-        this.suggestionBox.innerHTML = '';
+        //        this.suggestionBox.innerHTML = '';
         this.suggestionBox.style.display = 'none';
     }
 
