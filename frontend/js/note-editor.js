@@ -6,7 +6,7 @@ export default class NoteEditor {
         this.selection = window.getSelection();
         this.text = 0;
         this.suggestionBox = document.getElementById("suggestions")
-        this.suggestions = ['h1', 'h2', 'mono', 'fc', 'list-fc'];
+        this.suggestions = ['head1', 'head2', 'mono', 'fc', 'list-fc'];
         this.suggestionDesc = ['header 1', 'header 2', 'monospace', 'create new flashcard', 'create new flashcard w/ list']
         document.getElementById("header1").addEventListener("mousedown", () => {
             this.addRich("h1");
@@ -80,9 +80,17 @@ export default class NoteEditor {
         if (this.selection.rangeCount > 0) {
             const range = this.selection.getRangeAt(0);
                 for(let i=0;i<this.suggestions.length;i++) {
-                    const e = document.createElement('div');
+                    const e = document.createElement(this.suggestions[i]);
+                    const es = document.createElement('div');
+                    es.classList.add("suggestionKey");
+                    es.innerHTML = this.suggestions[i];
+                    e.appendChild(es);
+                    e.appendChild(document.createElement('div'));
+                    const ed = document.createElement('div');
+                    ed.classList.add("suggestionDesc");
+                    ed.innerHTML = this.suggestionDesc[i];
+                    e.appendChild(ed);
                     e.classList.add("suggestion");
-                    e.innerHTML = this.suggestions[i];
                     this.suggestionBox.appendChild(e);
                     console.log(e);
                 }
