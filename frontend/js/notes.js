@@ -1,5 +1,9 @@
+import Experience from './experience.js'
+
 class Note {
     constructor(title, innerHTML) {
+        this.experience = new Experience();
+        this.id = this.experience.idGen.newID()
         this.title = title
         this.html = innerHTML;
     }
