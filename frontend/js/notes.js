@@ -42,6 +42,7 @@ export default class Notes {
             e.appendChild(et);
             e.appendChild(ed);
             p.appendChild(e);
+            this.selectNote(0);
             e.addEventListener("mousedown", () => {
                 this.selectNote(i);
             })
