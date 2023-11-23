@@ -54,7 +54,7 @@ export default class Notes {
             this.loadNotesList();
         })
         document.getElementById("delete").addEventListener("mousedown", () => {
-            if(this.selectedIndex>=0) {
+            if (this.selectedIndex >= 0) {
                 this.notes.splice(this.selectedIndex, 1)
                 this.selectedIndex = -1;
                 this.loadNotesList();
