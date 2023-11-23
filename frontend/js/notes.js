@@ -22,7 +22,7 @@ export default class Notes {
     loadNotesList() {
         const p = document.getElementById("noteList");
         p.innerHTML = '';
-        for(let i=0;i<this.notes.length;i++) {
+        for (let i = 0; i < this.notes.length; i++) {
             const n = this.notes[i];
             const es = document.createElement("span");
             es.classList.add("noteListItemIcon", "material-symbols-rounded");
@@ -42,18 +42,34 @@ export default class Notes {
             e.appendChild(et);
             e.appendChild(ed);
             p.appendChild(e);
+            e.addEventListener("mousedown", () => {
+                this.selectNote(i);
+            })
         }
     }
 
     initListeners() {
-        document.getElementById("addNote").addEventListener("mousedown", ()=>{
+        document.getElementById("addNote").addEventListener("mousedown", () => {
             this.notes.push(new Note("new note", undefined))
             this.loadNotesList();
         })
-        document.getElementById("delete").addEventListener("mousedown", ()=> {
-            this.notes.splice(this.selectedIndex, 1)
-            this.loadNotesList();
+        document.getElementById("delete").addEventListener("mousedown", () => {
+            if(this.selectedIndex>=0) {
+                this.notes.splice(this.selectedIndex, 1)
+                this.selectedIndex = -1;
+                this.loadNotesList();
+            }
         })
+    }
+
+    selectNote(index) {
+        this.selectedIndex = index;
+        this.selectedNote = this.notes[this.selectedIndex];
+        for (let i = 0; i < this.notes.length; i++) {
+            document.getElementById(`n${this.notes[i].id}`).classList.remove("active");
+        }
+        document.getElementById(`n${this.selectedNote.id}`).classList.add("active")
+        console.log(this.selectedIndex);
     }
 
     updateTitle(newTitle) {

@@ -23,11 +23,11 @@ export default class NoteEditor {
         document.getElementById("monospace").addEventListener("mousedown", () => {
             this.addMonospace()
         })
-        this.title.addEventListener("focusout", ()=> {
+        this.title.addEventListener("focusout", () => {
             this.experience.notes.updateTitle(this.title.innerHTML)
         })
-        this.title.addEventListener("keydown", (e)=> {
-            if(e.key == "Enter") {
+        this.title.addEventListener("keydown", (e) => {
+            if (e.key == "Enter") {
                 e.preventDefault();
             }
         })
@@ -50,7 +50,7 @@ export default class NoteEditor {
                     const textNode = document.createTextNode(parentElement.innerText);
                     parentElement.parentNode.replaceChild(textNode, parentElement);
                 } else {
-                        if (parentElement.parentElement === this.p) {
+                    if (parentElement.parentElement === this.p) {
                         const element = document.createElement(name);
                         element.appendChild(document.createTextNode(selectedNode.nodeValue));
                         selectedNode.remove()

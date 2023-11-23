@@ -298,11 +298,11 @@ header {
     transition: all .25s ease;
     border-radius: .4rem;
     cursor: pointer;
+    transition: all .25s ease;
 }
 
 .noteListItem.active {
     color: var(--txt) !important;
-    background-color: var(--s);
 
     border: 1px var(--p) solid;
 }
@@ -365,7 +365,7 @@ header {
 
 .listHl {
     margin: auto;
-    height: .5rem;
+    height: .8rem;
     width: 100%;
     background: var(--b);
     border-radius: .2rem;
@@ -382,8 +382,9 @@ header {
     width: .8rem;
     height: .75rem;
     border-radius: .15rem;
-    border: 1px solid var(--txt);
+    border: 1.5px solid var(--txta);
     transition: all .25s ease;
+    margin: .2rem;
 }
 
 .checkbox:hover {
