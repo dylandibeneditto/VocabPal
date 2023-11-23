@@ -15,10 +15,13 @@ export default class Notes {
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
         this.loadNotesList();
+        this.initListeners();
+        console.log(this.notes)
     }
 
     loadNotesList() {
         const p = document.getElementById("noteList");
+        p.innerHTML = '';
         for(let i=0;i<this.notes.length;i++) {
             const n = this.notes[i];
             const es = document.createElement("span");
@@ -40,6 +43,13 @@ export default class Notes {
             e.appendChild(ed);
             p.appendChild(e);
         }
+    }
+
+    initListeners() {
+        document.getElementById("addNote").addEventListener("mousedown", ()=>{
+            this.notes.push(new Note("new note", undefined))
+            this.loadNotesList();
+        })
     }
 
     updateTitle(newTitle) {
