@@ -50,6 +50,10 @@ export default class Notes {
             this.notes.push(new Note("new note", undefined))
             this.loadNotesList();
         })
+        document.getElementById("delete").addEventListener("mousedown", ()=> {
+            this.notes.splice(this.selectedIndex, 1)
+            this.loadNotesList();
+        })
     }
 
     updateTitle(newTitle) {
