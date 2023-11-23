@@ -23,7 +23,7 @@ export default class NoteEditor {
         document.getElementById("monospace").addEventListener("mousedown", () => {
             this.addMonospace()
         })
-        this.title.addEventListener("keydown", (e)=> {
+        this.title.addEventListener("focusout", (e)=> {
             if(e.key == "Enter") {
                 e.preventDefault();
             }
