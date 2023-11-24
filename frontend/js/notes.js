@@ -16,14 +16,13 @@ export default class Notes {
         this.selectedNote = this.notes[this.selectedIndex]
         this.loadNotesList();
         this.initListeners();
-        console.log(this.notes)
     }
 
     loadNotesList() {
         const p = document.getElementById("noteList");
         p.innerHTML = '';
         for (let i = 0; i < this.notes.length; i++) {
-            const n = this.notes[i];
+            let n = this.notes[i];
             const es = document.createElement("span");
             es.classList.add("noteListItemIcon", "material-symbols-rounded");
             es.innerHTML = 'description';
@@ -42,7 +41,6 @@ export default class Notes {
             e.appendChild(et);
             e.appendChild(ed);
             p.appendChild(e);
-            this.selectNote(0);
             e.addEventListener("mousedown", () => {
                 this.selectNote(i);
             })
@@ -57,8 +55,8 @@ export default class Notes {
         document.getElementById("delete").addEventListener("mousedown", () => {
             if (this.selectedIndex >= 0) {
                 this.notes.splice(this.selectedIndex, 1)
-                this.selectedIndex = -1;
                 this.loadNotesList();
+                this.selectedIndex = -1;
             }
         })
     }
@@ -67,15 +65,14 @@ export default class Notes {
         this.selectedIndex = index;
         this.selectedNote = this.notes[this.selectedIndex];
         for (let i = 0; i < this.notes.length; i++) {
+            console.log(document.getElementById(`n${this.notes[i].id}`))
             document.getElementById(`n${this.notes[i].id}`).classList.remove("active");
         }
         document.getElementById(`n${this.selectedNote.id}`).classList.add("active")
-        console.log(this.selectedIndex);
     }
 
     updateTitle(newTitle) {
         this.selectedNote.title = newTitle;
         document.getElementById(`t${this.selectedNote.id}`).innerHTML = newTitle;
-        console.log("hello")
     }
 }
