@@ -53,12 +53,30 @@ export default class Notes {
             this.loadNotesList();
         })
         document.getElementById("delete").addEventListener("mousedown", () => {
-            if (this.selectedIndex >= 0) {
-                this.notes.splice(this.selectedIndex, 1)
-                this.loadNotesList();
-                this.selectedIndex = -1;
-            }
+            const d = document.getElementById("deleteNotePrompt");
+            const y = document.getElementById("dyPrompt");
+            const n = document.getElementById("dnPrompt");
+            d.style.visibility = 'visible'
+            d.style.opacity = 1;
+            y.addEventListener("mousedown", () => {
+                this.deleteNote()
+                d.style.visibility = 'hidden'
+                d.style.opacity = 0;
+            })
+            n.addEventListener("mousedown", () => {
+                console.log("HELLO")
+                d.style.visibility = 'hidden'
+                d.style.opacity = 0;
+            })
         })
+    }
+
+    deleteNote() {
+        if (this.selectedIndex >= 0) {
+            this.notes.splice(this.selectedIndex, 1)
+            this.selectedIndex = -1;
+            this.loadNotesList();
+        }
     }
 
     selectNote(index) {

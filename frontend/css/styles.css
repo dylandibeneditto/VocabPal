@@ -728,3 +728,46 @@ div.monospace {
     overflow: hidden;
     box-sizing: border-box;
 }
+
+#deleteNotePrompt {
+    transition: all .25s ease;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    position: absolute;
+    padding: 1rem;
+    border-radius: .6rem;
+    width: fit-content;
+    height: max-content;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    background: var(--b);
+    border: 1px var(--s) solid;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+#deleteAnswerWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.promptAnswer {
+    padding: .3rem .4rem;
+    border-radius: .3rem;
+    border: 1px solid var(--s);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all .25s ease;
+}
+
+#dyPrompt:hover {
+    border-color: lime;
+}
+
+#dnPrompt:hover {
+    border-color: red;
+}
