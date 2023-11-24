@@ -12,6 +12,7 @@ class Note {
 export default class Notes {
     constructor() {
         this.p = document.getElementById("noteEditor");
+        this.t = document.getElementById("noteT");
         this.notes = [new Note("new note!")]
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
@@ -46,6 +47,7 @@ export default class Notes {
                 this.selectedNote.html = this.p.innerHTML
                 this.selectNote(i);
                 this.p.innerHTML = this.selectedNote.html;
+                this.t.innerHTML = this.selectedNote.title;
             })
         }
     }
