@@ -766,9 +766,9 @@ div.monospace {
 }
 
 #dyPrompt:hover {
-    border-color: lime;
+    border-color: var(--y);
 }
 
 #dnPrompt:hover {
-    border-color: red;
+    border-color: var(--n);
 }
