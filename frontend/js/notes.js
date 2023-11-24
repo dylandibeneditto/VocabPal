@@ -40,7 +40,7 @@ export default class Notes {
             const e = document.createElement("div");
             e.id = `n${n.id}`
             e.classList.add("noteListItem");
-            if(i == this.selectedIndex) {
+            if (i == this.selectedIndex) {
                 e.classList.add("active");
             }
             e.appendChild(es);
@@ -60,40 +60,42 @@ export default class Notes {
     initListeners() {
         document.getElementById("addNote").addEventListener("mousedown", () => {
             this.notes.push(new Note("new note"));
-            this.selectedIndex = this.notes.length-1;
+            this.selectedIndex = this.notes.length - 1;
             this.loadNotesList();
         });
-    
+
         document.getElementById("delete").addEventListener("mousedown", () => {
-            const d = document.getElementById("deleteNotePrompt");
-            const y = document.getElementById("dyPrompt");
-            const n = document.getElementById("dnPrompt");
-    
-            d.style.visibility = 'visible';
-            d.style.opacity = 1;
-    
-            // Ensure the event listeners are added only once
-            if (!this.deleteConfirmationListenersAdded) {
-                y.addEventListener("mousedown", () => {
-                    this.deleteNote();
-                    d.style.visibility = 'hidden';
-                    d.style.opacity = 0;
-                });
-    
-                n.addEventListener("mousedown", () => {
-                    d.style.visibility = 'hidden';
-                    d.style.opacity = 0;
-                });
-    
-                this.deleteConfirmationListenersAdded = true;
+            if (this.notes.length !== 1) {
+                const d = document.getElementById("deleteNotePrompt");
+                const y = document.getElementById("dyPrompt");
+                const n = document.getElementById("dnPrompt");
+
+                d.style.visibility = 'visible';
+                d.style.opacity = 1;
+
+                // Ensure the event listeners are added only once
+                if (!this.deleteConfirmationListenersAdded) {
+                    y.addEventListener("mousedown", () => {
+                        this.deleteNote();
+                        d.style.visibility = 'hidden';
+                        d.style.opacity = 0;
+                    });
+
+                    n.addEventListener("mousedown", () => {
+                        d.style.visibility = 'hidden';
+                        d.style.opacity = 0;
+                    });
+
+                    this.deleteConfirmationListenersAdded = true;
+                }
             }
         });
     }
-    
+
 
     deleteNote() {
-        if (this.notes.length!==1) {
-            console.log("DELETE", this.selectedIndex, this.selectedIndex==0 ? 0 : 1)
+        if (this.notes.length !== 1) {
+            console.log("DELETE", this.selectedIndex, this.selectedIndex == 0 ? 0 : 1)
             this.notes.splice(this.selectedIndex, 1)
             this.selectedIndex = Math.min(this.selectedIndex, this.notes.length - 1);
             this.selectedNote = this.notes[this.selectedIndex];
