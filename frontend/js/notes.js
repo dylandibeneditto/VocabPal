@@ -83,7 +83,8 @@ export default class Notes {
     deleteNote() {
         if (this.selectedIndex >= 0) {
             this.notes.splice(this.selectedIndex, 1)
-            this.selectedIndex = -1;
+            this.selectedIndex -= this.selectedIndex==0 ? 0 : 1;
+            this.selectedNote = this.notes[this.selectedIndex];
             this.loadNotesList();
         }
     }
