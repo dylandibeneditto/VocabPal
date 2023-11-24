@@ -46,6 +46,7 @@ export default class Notes {
             p.appendChild(e);
             e.addEventListener("mousedown", () => {
                 this.selectedNote.html = this.p.innerHTML
+                this.updateTitle(this.t.innerHTML);
                 this.selectNote(i);
                 this.p.innerHTML = this.selectedNote.html;
                 this.t.innerHTML = this.selectedNote.title;
