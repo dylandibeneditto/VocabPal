@@ -48,11 +48,9 @@ export default class Notes {
             e.appendChild(ed);
             p.appendChild(e);
             e.addEventListener("mousedown", () => {
-                this.selectedNote.html = this.p.innerHTML
-                this.updateTitle(this.t.innerHTML);
+
                 this.selectNote(i);
-                this.p.innerHTML = this.selectedNote.html;
-                this.t.innerHTML = this.selectedNote.title;
+                
             })
         }
     }
@@ -60,8 +58,8 @@ export default class Notes {
     initListeners() {
         document.getElementById("addNote").addEventListener("mousedown", () => {
             this.notes.push(new Note("new note"));
-            this.selectedIndex = this.notes.length - 1;
             this.loadNotesList();
+            this.selectNote(this.notes.length-1);
         });
 
         document.getElementById("delete").addEventListener("mousedown", () => {
@@ -104,12 +102,25 @@ export default class Notes {
     }
 
     selectNote(index) {
+        this.saveNote()
         this.selectedIndex = index;
         this.selectedNote = this.notes[this.selectedIndex];
         for (let i = 0; i < this.notes.length; i++) {
             document.getElementById(`n${this.notes[i].id}`).classList.remove("active");
         }
         document.getElementById(`n${this.selectedNote.id}`).classList.add("active")
+        this.updateNote();
+    }
+
+    saveNote() {
+        //must be called before the update of the selectedNote variable
+        this.selectedNote.html = this.p.innerHTML
+        this.updateTitle(this.t.innerHTML);
+    }
+
+    updateNote() {
+        this.p.innerHTML = this.selectedNote.html;
+        this.t.innerHTML = this.selectedNote.title;
     }
 
     updateTitle(newTitle) {
