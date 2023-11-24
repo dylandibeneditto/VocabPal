@@ -8,20 +8,20 @@ export default class NoteEditor {
         this.selection = window.getSelection();
         this.text = 0;
         this.suggestionBox = document.getElementById("suggestions");
-        this.suggestions = ['h1', 'h2', 'mono', 'fc', 'list-fc'];
-        this.suggestionDesc = ['header 1', 'header 2', 'monospace', 'create new flashcard', 'create new flashcard w/ list'];
+        this.suggestions = ['h1', 'h2', 'mono', 'fc', 'list-fc', 'b'];
+        this.suggestionDesc = ['header 1', 'header 2', 'monospace', 'create new flashcard', 'create new flashcard w/ list', 'body'];
         this.initListeners()
     }
 
     initListeners() {
         document.getElementById("header1").addEventListener("mousedown", () => {
-            this.addRich("head1");
+            this.insertCommand("h1")
         })
         document.getElementById("header2").addEventListener("mousedown", () => {
-            this.addRich("head2");
+            this.insertCommand("h2")
         })
         document.getElementById("monospace").addEventListener("mousedown", () => {
-            this.addRich('monospace')
+            this.insertCommand("mono")
         })
         this.title.addEventListener("focusout", () => {
             this.experience.notes.updateTitle(this.title.innerHTML)
@@ -36,6 +36,9 @@ export default class NoteEditor {
                 this.showCommandBar();
             } else if (e.key == ' ' || e.key == 'Enter' || e.key == 'Backspace') {
                 this.hideCommandBar();
+                if(e.key=='Enter') {
+                    this.addRich('body', '')
+                }
             }
         })
         this.p.addEventListener("mousedown", () => {
@@ -43,31 +46,34 @@ export default class NoteEditor {
         })
     }
 
-    addRich(command) {
+    addRich(command, fill) {
         const selection = window.getSelection();
-        if (selection.rangeCount >= 0) {
+        if (selection.rangeCount > 0) {
             const range = selection.getRangeAt(0);
             const span = document.createElement('span');
-            span.innerHTML = command;
+            span.innerHTML = fill;
             span.classList.add(command);
-            //span.textContent = range.toString();
-            //range.deleteContents();
-            //range.insertNode(span);
-            console.log(command)
-            this.p.appendChild(span)
+            span.textContent = range.toString();
+            range.deleteContents();
+            range.insertNode(span);
+            console.log(fill)
         }
     }
 
     insertCommand(cmd) {
         switch (cmd) {
             case 'h1':
-                this.addRich('head1')
+                this.addRich('head1', 'header 1')
+                console.log("hello")
                 break;
             case 'h2':
-                this.addRich('head2')
+                this.addRich('head2', 'header 2')
                 break;
             case 'mono':
-                this.addRich('monospace')
+                this.addRich('monospace', 'monospace')
+                break;
+            case 'b':
+                this.addRich('body', '');
                 break;
             case 'fc':
                 //this.addFlashcard()
