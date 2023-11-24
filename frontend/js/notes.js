@@ -7,18 +7,11 @@ class Note {
         this.title = title
         this.html = '';
     }
-
-    setContent(content) {
-        this.html = content
-    }
-
-    getContent() {
-        return this.content;
-    }
 }
 
 export default class Notes {
     constructor() {
+        this.p = document.getElementById("noteEditor");
         this.notes = [new Note("new note!")]
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
@@ -50,7 +43,9 @@ export default class Notes {
             e.appendChild(ed);
             p.appendChild(e);
             e.addEventListener("mousedown", () => {
+                this.selectedNote.html = this.p.innerHTML
                 this.selectNote(i);
+                this.p.innerHTML = this.selectedNote.html;
             })
         }
     }
@@ -72,7 +67,6 @@ export default class Notes {
                 d.style.opacity = 0;
             })
             n.addEventListener("mousedown", () => {
-                console.log("HELLO")
                 d.style.visibility = 'hidden'
                 d.style.opacity = 0;
             })
@@ -91,7 +85,6 @@ export default class Notes {
         this.selectedIndex = index;
         this.selectedNote = this.notes[this.selectedIndex];
         for (let i = 0; i < this.notes.length; i++) {
-            console.log(document.getElementById(`n${this.notes[i].id}`))
             document.getElementById(`n${this.notes[i].id}`).classList.remove("active");
         }
         document.getElementById(`n${this.selectedNote.id}`).classList.add("active")
