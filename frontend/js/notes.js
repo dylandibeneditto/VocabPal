@@ -60,6 +60,7 @@ export default class Notes {
     initListeners() {
         document.getElementById("addNote").addEventListener("mousedown", () => {
             this.notes.push(new Note("new note"));
+            this.selectedIndex = this.notes.length-1;
             this.loadNotesList();
         });
     
