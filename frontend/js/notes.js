@@ -18,6 +18,7 @@ export default class Notes {
         this.selectedNote = this.notes[this.selectedIndex]
         this.loadNotesList();
         this.initListeners();
+        this.selectNote(0);
     }
 
     loadNotesList() {
