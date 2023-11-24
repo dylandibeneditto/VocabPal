@@ -1,17 +1,25 @@
 import Experience from './experience.js'
 
 class Note {
-    constructor(title, innerHTML) {
+    constructor(title) {
         this.experience = new Experience();
         this.id = this.experience.idGen.newID()
         this.title = title
-        this.html = innerHTML;
+        this.html = '';
+    }
+
+    setContent(content) {
+        this.html = content
+    }
+
+    getContent() {
+        return this.content;
     }
 }
 
 export default class Notes {
     constructor() {
-        this.notes = [new Note("new note!", document.getElementById("noteEditor"))]
+        this.notes = [new Note("new note!")]
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
         this.loadNotesList();
@@ -49,7 +57,7 @@ export default class Notes {
 
     initListeners() {
         document.getElementById("addNote").addEventListener("mousedown", () => {
-            this.notes.push(new Note("new note", undefined))
+            this.notes.push(new Note("new note"))
             this.loadNotesList();
         })
         document.getElementById("delete").addEventListener("mousedown", () => {
