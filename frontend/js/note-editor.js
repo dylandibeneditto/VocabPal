@@ -38,12 +38,16 @@ export default class NoteEditor {
                 this.hideCommandBar();
             }
         })
+        this.p.addEventListener("mousedown", () => {
+            this.hideCommandBar();
+        })
     }
 
     addRich(name) {
         if (this.selection.rangeCount > 0) {
             const range = this.selection.getRangeAt(0);
             const selectedNode = range.commonAncestorContainer;
+            console.log(range)
             if (selectedNode.nodeType === Node.TEXT_NODE) {
                 const parentElement = selectedNode.parentElement;
                 if (parentElement.nodeName === name.toLocaleUpperCase()) {
@@ -51,6 +55,7 @@ export default class NoteEditor {
                     parentElement.parentNode.replaceChild(textNode, parentElement);
                 } else {
                     if (parentElement.parentElement === this.p) {
+                        this.hideCommandBar()
                         const element = document.createElement(name);
                         element.appendChild(document.createTextNode(selectedNode.nodeValue));
                         selectedNode.remove()
@@ -74,6 +79,7 @@ export default class NoteEditor {
                     const textNode = document.createTextNode(parentElement.innerText);
                     parentElement.parentNode.replaceChild(textNode, parentElement);
                 } else {
+                    this.hideCommandBar()
                     const element = document.createElement("div");
                     element.classList.add("monospace");
                     element.appendChild(document.createTextNode(selectedNode.nodeValue));
@@ -85,11 +91,35 @@ export default class NoteEditor {
         }
     }
 
+    insertCommand(cmd) {
+        switch (cmd) {
+            case 'head1':
+                this.addRich('h1')
+                break;
+            case 'head2':
+                this.addRich('h2')
+                break;
+            case 'mono':
+                this.addMonospace()
+                break;
+            case 'fc':
+                //this.addFlashcard()
+                break;
+            case 'list-fc':
+                //this.addFlashcard()
+                //this.addList()
+                break;
+        }
+
+    }
+
     showCommandBar() {
         if (this.selection.rangeCount > 0) {
             const range = this.selection.getRangeAt(0);
+            this.suggestionBox.innerHTML = '';
             for (let i = 0; i < this.suggestions.length; i++) {
-                const e = document.createElement(this.suggestions[i]);
+                const e = document.createElement('div');
+                e.id = this.suggestions[i]
                 const es = document.createElement('div');
                 es.classList.add("suggestionKey");
                 es.innerHTML = this.suggestions[i];
@@ -101,6 +131,9 @@ export default class NoteEditor {
                 e.appendChild(ed);
                 e.classList.add("suggestion");
                 this.suggestionBox.appendChild(e);
+                e.addEventListener("mousedown", () => {
+                    this.insertCommand(this.suggestions[i])
+                })
             }
             this.suggestionBox.style.display = 'flex';
             range.deleteContents()
