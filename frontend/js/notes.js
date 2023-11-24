@@ -40,6 +40,9 @@ export default class Notes {
             const e = document.createElement("div");
             e.id = `n${n.id}`
             e.classList.add("noteListItem");
+            if(i == this.selectedIndex) {
+                e.classList.add("active");
+            }
             e.appendChild(es);
             e.appendChild(et);
             e.appendChild(ed);
