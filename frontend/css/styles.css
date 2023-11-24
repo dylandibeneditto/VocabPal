@@ -674,8 +674,18 @@ footer {
     height: 100%;
 }
 
-div.monospace {
+span.monospace {
     font-family: 'Roboto Mono';
+}
+
+span.head1 {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+span.head2 {
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 #suggestions {

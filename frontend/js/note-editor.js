@@ -8,20 +8,20 @@ export default class NoteEditor {
         this.selection = window.getSelection();
         this.text = 0;
         this.suggestionBox = document.getElementById("suggestions");
-        this.suggestions = ['head1', 'head2', 'mono', 'fc', 'list-fc'];
+        this.suggestions = ['h1', 'h2', 'mono', 'fc', 'list-fc'];
         this.suggestionDesc = ['header 1', 'header 2', 'monospace', 'create new flashcard', 'create new flashcard w/ list'];
         this.initListeners()
     }
 
     initListeners() {
         document.getElementById("header1").addEventListener("mousedown", () => {
-            this.addRich("h1");
+            this.addRich("head1");
         })
         document.getElementById("header2").addEventListener("mousedown", () => {
-            this.addRich("h2");
+            this.addRich("head2");
         })
         document.getElementById("monospace").addEventListener("mousedown", () => {
-            this.addMonospace()
+            this.addRich('monospace')
         })
         this.title.addEventListener("focusout", () => {
             this.experience.notes.updateTitle(this.title.innerHTML)
@@ -43,64 +43,31 @@ export default class NoteEditor {
         })
     }
 
-    addRich(name) {
-        if (this.selection.rangeCount > 0) {
-            const range = this.selection.getRangeAt(0);
-            const selectedNode = range.commonAncestorContainer;
-            console.log(range)
-            if (selectedNode.nodeType === Node.TEXT_NODE) {
-                const parentElement = selectedNode.parentElement;
-                if (parentElement.nodeName === name.toLocaleUpperCase()) {
-                    const textNode = document.createTextNode(parentElement.innerText);
-                    parentElement.parentNode.replaceChild(textNode, parentElement);
-                } else {
-                    if (parentElement.parentElement === this.p) {
-                        this.hideCommandBar()
-                        const element = document.createElement(name);
-                        element.appendChild(document.createTextNode(selectedNode.nodeValue));
-                        selectedNode.remove()
-                        range.deleteContents();
-                        range.insertNode(element);
-                    }
-                }
-            }
-        }
-    }
-
-    addMonospace() {
-        if (this.selection.rangeCount > 0) {
-            const range = this.selection.getRangeAt(0);
-            const selectedNode = range.commonAncestorContainer;
-
-            if (selectedNode.nodeType === Node.TEXT_NODE) {
-                const parentElement = selectedNode.parentElement;
-
-                if (parentElement.classList.contains("monospace")) {
-                    const textNode = document.createTextNode(parentElement.innerText);
-                    parentElement.parentNode.replaceChild(textNode, parentElement);
-                } else {
-                    this.hideCommandBar()
-                    const element = document.createElement("div");
-                    element.classList.add("monospace");
-                    element.appendChild(document.createTextNode(selectedNode.nodeValue));
-                    selectedNode.remove()
-                    range.deleteContents()
-                    range.insertNode(element);
-                }
-            }
+    addRich(command) {
+        const selection = window.getSelection();
+        if (selection.rangeCount >= 0) {
+            const range = selection.getRangeAt(0);
+            const span = document.createElement('span');
+            span.innerHTML = command;
+            span.classList.add(command);
+            //span.textContent = range.toString();
+            //range.deleteContents();
+            //range.insertNode(span);
+            console.log(command)
+            this.p.appendChild(span)
         }
     }
 
     insertCommand(cmd) {
         switch (cmd) {
-            case 'head1':
-                this.addRich('h1')
+            case 'h1':
+                this.addRich('head1')
                 break;
-            case 'head2':
-                this.addRich('h2')
+            case 'h2':
+                this.addRich('head2')
                 break;
             case 'mono':
-                this.addMonospace()
+                this.addRich('monospace')
                 break;
             case 'fc':
                 //this.addFlashcard()
