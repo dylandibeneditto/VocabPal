@@ -36,7 +36,7 @@ export default class NoteEditor {
                 this.showCommandBar();
             } else if (e.key == ' ' || e.key == 'Enter' || e.key == 'Backspace') {
                 this.hideCommandBar();
-                if(e.key=='Enter') {
+                if (e.key == 'Enter') {
                     this.addRich('body', '')
                 }
             }
@@ -47,16 +47,25 @@ export default class NoteEditor {
     }
 
     addRich(command, fill) {
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
+        this.selection = window.getSelection();
+        if (this.selection.rangeCount > 0) {
+            const range = this.selection.getRangeAt(0);
+            const selectedNode = range.commonAncestorContainer;
             const span = document.createElement('span');
             span.innerHTML = fill;
             span.classList.add(command);
-            span.textContent = range.toString();
-            range.deleteContents();
-            range.insertNode(span);
-            console.log(fill)
+            //span.textContent = range.toString();
+            console.log(selectedNode)
+            if (selectedNode !== this.p) {
+                if (selectedNode.nextSibling === null) {
+                    this.p.appendChild(span)
+                } else {
+                    console.log(selectedNode.nextSibling)
+                    selectedNode.parentNode.insertBefore(span, selectedNode.nextSibling)
+                }
+            } else {
+                this.p.appendChild(span)
+            }
         }
     }
 
@@ -110,7 +119,7 @@ export default class NoteEditor {
             }
             this.suggestionBox.style.display = 'flex';
             range.deleteContents()
-            range.insertNode(this.suggestionBox);
+            this.selection.focusNode.insertAdjacentElement("afterEnd", this.suggestionBox);
         }
     }
 
