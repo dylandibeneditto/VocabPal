@@ -676,22 +676,18 @@ footer {
     flex-direction: column;
 }
 
-span.monospace {
+div.monospace {
     font-family: 'Roboto Mono';
 }
 
-span.head1 {
+div.head1 {
     font-weight: 600;
     font-size: 2rem;
 }
 
-span.head2 {
+div.head2 {
     font-weight: 600;
     font-size: 1.5rem;
-}
-
-span.head1 > * {
-    font-size: 1rem;
 }
 
 #suggestions {

@@ -6,6 +6,7 @@ export default class NoteEditor {
         this.p = p;
         this.title = document.getElementById("noteT");
         this.selection = window.getSelection();
+        this.selectedTextStyle = "";
         this.text = 0;
         this.suggestionBox = document.getElementById("suggestions");
         this.suggestions = ['h1', 'h2', 'mono', 'fc', 'list-fc', 'b'];
@@ -15,13 +16,22 @@ export default class NoteEditor {
 
     initListeners() {
         document.getElementById("header1").addEventListener("mousedown", () => {
-            this.insertCommand("h1")
+            if(this.selectedTextStyle!=='h1') {
+                this.insertCommand("h1")
+                this.selectedTextStyle = "h1"
+            }
         })
         document.getElementById("header2").addEventListener("mousedown", () => {
-            this.insertCommand("h2")
+            if(this.selectedTextStyle!=='h2') {
+                this.insertCommand("h2")
+                this.selectedTextStyle = "h2"
+            }
         })
         document.getElementById("monospace").addEventListener("mousedown", () => {
-            this.insertCommand("mono")
+            if(this.selectedTextStyle!=='mono') {
+                this.insertCommand("mono")
+                this.selectedTextStyle = "mono"
+            }
         })
         this.title.addEventListener("focusout", () => {
             this.experience.notes.updateTitle(this.title.innerHTML)
@@ -36,9 +46,6 @@ export default class NoteEditor {
                 this.showCommandBar();
             } else if (e.key == ' ' || e.key == 'Enter' || e.key == 'Backspace') {
                 this.hideCommandBar();
-                if (e.key == 'Enter') {
-                    this.addRich('body', '')
-                }
             }
         })
         this.p.addEventListener("mousedown", () => {
@@ -47,33 +54,36 @@ export default class NoteEditor {
     }
 
     addRich(command, fill) {
-        this.selection = window.getSelection();
         if (this.selection.rangeCount > 0) {
-            const range = this.selection.getRangeAt(0);
-            const selectedNode = range.commonAncestorContainer;
-            const span = document.createElement('span');
-            span.innerHTML = fill;
-            span.classList.add(command);
-            //span.textContent = range.toString();
-            console.log(selectedNode)
-            if (selectedNode !== this.p) {
-                if (selectedNode.nextSibling === null) {
-                    this.p.appendChild(span)
-                } else {
-                    console.log(selectedNode.nextSibling)
-                    selectedNode.parentNode.insertBefore(span, selectedNode.nextSibling)
+            const cac = this.selection.getRangeAt(0).startContainer;
+            if(cac!==this.p) {
+                if(cac.parentElement!==this.p) {
+                    cac.parentElement.remove();
                 }
+                let cacInner = cac.textContent;
+                console.log(cacInner)
+                cac.remove()
+                const newCac = document.createElement("div")
+                newCac.classList.add(command)
+                if(cacInner=="") {
+                    cacInner = fill;
+                }
+                newCac.textContent = cacInner;
+                this.selection.getRangeAt(0).insertNode(newCac)
             } else {
-                this.p.appendChild(span)
+                console.log("no", cac)
             }
         }
+    }
+
+    revertToBody() {
+        
     }
 
     insertCommand(cmd) {
         switch (cmd) {
             case 'h1':
                 this.addRich('head1', 'header 1')
-                console.log("hello")
                 break;
             case 'h2':
                 this.addRich('head2', 'header 2')
