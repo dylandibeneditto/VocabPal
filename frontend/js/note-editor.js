@@ -16,19 +16,20 @@ export default class NoteEditor {
 
     initListeners() {
         document.getElementById("header1").addEventListener("mousedown", () => {
-            if(this.selectedTextStyle!=='h1') {
+            if (this.selectedTextStyle !== 'h1') {
                 this.insertCommand("h1")
+                //implement selectedTextStyle update function
                 this.selectedTextStyle = "h1"
             }
         })
         document.getElementById("header2").addEventListener("mousedown", () => {
-            if(this.selectedTextStyle!=='h2') {
+            if (this.selectedTextStyle !== 'h2') {
                 this.insertCommand("h2")
                 this.selectedTextStyle = "h2"
             }
         })
         document.getElementById("monospace").addEventListener("mousedown", () => {
-            if(this.selectedTextStyle!=='mono') {
+            if (this.selectedTextStyle !== 'mono') {
                 this.insertCommand("mono")
                 this.selectedTextStyle = "mono"
             }
@@ -46,6 +47,12 @@ export default class NoteEditor {
                 this.showCommandBar();
             } else if (e.key == ' ' || e.key == 'Enter' || e.key == 'Backspace') {
                 this.hideCommandBar();
+                if (e.key == 'Enter') {
+                    if (this.selectedTextStyle !== 'body') {
+                        this.revertToBody()
+                    }
+                    this.selectedTextStyle = 'body'
+                }
             }
         })
         this.p.addEventListener("mousedown", () => {
@@ -56,8 +63,8 @@ export default class NoteEditor {
     addRich(command, fill) {
         if (this.selection.rangeCount > 0) {
             const cac = this.selection.getRangeAt(0).startContainer;
-            if(cac!==this.p) {
-                if(cac.parentElement!==this.p) {
+            if (cac !== this.p) {
+                if (cac.parentElement !== this.p) {
                     cac.parentElement.remove();
                 }
                 let cacInner = cac.textContent;
@@ -65,19 +72,30 @@ export default class NoteEditor {
                 cac.remove()
                 const newCac = document.createElement("div")
                 newCac.classList.add(command)
-                if(cacInner=="") {
+                newCac.contentEditable = "true";
+                if (cacInner == "") {
                     cacInner = fill;
                 }
                 newCac.textContent = cacInner;
                 this.selection.getRangeAt(0).insertNode(newCac)
             } else {
-                console.log("no", cac)
+                const e = document.createElement("div");
+                e.classList.add(command);
+                e.textContent = fill;
+                this.p.appendChild(e);
             }
         }
     }
 
     revertToBody() {
-        
+        if (this.selection.rangeCount > 0) {
+            const cac = this.selection.getRangeAt(0).startContainer;
+            if (cac !== this.p) {
+                if (cac.parentElement !== this.p) {
+                    cac.parentElement.remove()
+                }
+            }
+        }
     }
 
     insertCommand(cmd) {
