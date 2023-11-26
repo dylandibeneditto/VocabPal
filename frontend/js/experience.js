@@ -12,7 +12,11 @@ export default class Experience {
 
         this.notes = new Notes()
         this.noteEditor = new Quill('#noteEditor', {
-            modules: {toolbar: '#toolbar'},
+            modules: {toolbar: [
+                [{ header: [1, 2, false] }],
+                ['bold', 'italic', 'underline'],
+                ['image', 'code-block']
+            ]},
             placeholder: "new note...",
             theme: 'snow',
         });
