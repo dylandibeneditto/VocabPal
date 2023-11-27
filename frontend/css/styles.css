@@ -677,6 +677,35 @@ footer {
     font-size: 1rem;
 }
 
+
+.ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-mitter, .ql-snow .ql-toolbar button:hover .ql-stroke-mitter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-mitter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-mitter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-mitter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-mitter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-mitter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-mitter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-mitter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-mitter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-mitter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-mitter {
+    stroke: var(--p) !important;
+    color: var(--p) !important;
+    border-color: var(--p) !important;
+    background-color: var(--p) !important;
+}
+
+pre {
+    font-family: 'Roboto Mono';
+    background-color: var(--b) !important;
+}
+
+.ql-snow {
+    background-color: var(--t) !important;
+    border-radius: .6rem;
+    border: none !important;
+}
+
+.ql-picker-options {
+    border: none !important;
+    background: var(--b) !important;
+    border-radius: .6rem;
+}
+
+.ql-picker-options:hover {
+    color: var(--p) !important;
+}
+
 #suggestions {
     display: none;
     border: 1px solid var(--s);
