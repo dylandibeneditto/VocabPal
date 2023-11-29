@@ -1,5 +1,6 @@
 import PseudoID from './utils/pseudo-id.js'
 import Notes from './notes.js'
+import Flashcards from './flashcards.js'
 
 export default class Experience {
     static instance;
@@ -9,6 +10,8 @@ export default class Experience {
         }
         Experience.instance = this;
         this.idGen = new PseudoID()
+
+        this.flashcards = new Flashcards();
 
         this.noteEditor = new Quill('#noteEditor', {
             modules: {toolbar: [
