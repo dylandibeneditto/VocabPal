@@ -11,7 +11,7 @@ class Note {
 
 export default class Notes {
     constructor() {
-        this.p = document.getElementById("noteEditor");
+        this.p = document.querySelector(".ql-editor");
         this.t = document.getElementById("noteT");
         this.notes = [new Note("new note")]
         this.selectedIndex = 0;
@@ -50,7 +50,7 @@ export default class Notes {
             e.addEventListener("mousedown", () => {
 
                 this.selectNote(i);
-                
+
             })
         }
     }
@@ -59,7 +59,7 @@ export default class Notes {
         document.getElementById("addNote").addEventListener("mousedown", () => {
             this.notes.push(new Note("new note"));
             this.loadNotesList();
-            this.selectNote(this.notes.length-1);
+            this.selectNote(this.notes.length - 1);
         });
 
         document.getElementById("delete").addEventListener("mousedown", () => {
@@ -88,6 +88,23 @@ export default class Notes {
                 }
             }
         });
+
+        this.t.addEventListener("focusout", () => {
+            this.updateTitle(this.t.innerHTML)
+        })
+
+        this.t.addEventListener("keydown", (e) => {
+            if (e.key == "Enter") {
+                e.preventDefault();
+            }
+
+            if (this.t.innerHTML.length >= 30) {
+                console.log(e.key)
+                if(e.key.length===1) {
+                    e.preventDefault()
+                }
+            }
+        })
     }
 
 
@@ -124,7 +141,9 @@ export default class Notes {
     }
 
     updateTitle(newTitle) {
-        this.selectedNote.title = newTitle;
-        document.getElementById(`t${this.selectedNote.id}`).innerHTML = newTitle;
+        if (newTitle !== "") {
+            this.selectedNote.title = newTitle;
+            document.getElementById(`t${this.selectedNote.id}`).innerHTML = newTitle.length >= 10 ? newTitle.split('').splice(0, 10).toString().replaceAll(",", "") + '...' : newTitle;
+        }
     }
 }

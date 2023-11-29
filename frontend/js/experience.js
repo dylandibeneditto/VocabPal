@@ -10,16 +10,15 @@ export default class Experience {
         Experience.instance = this;
         this.idGen = new PseudoID()
 
-        this.notes = new Notes()
         this.noteEditor = new Quill('#noteEditor', {
             modules: {toolbar: [
                 [{ header: [1, 2, false] }],
                 ['bold', 'italic', 'underline'],
                 ['image', 'code-block']
             ]},
-            placeholder: "new note...",
             theme: 'snow',
         });
+        this.notes = new Notes()
         //this.noteEditor = new NoteEditor(document.getElementById("noteEditor"));
     }
 }

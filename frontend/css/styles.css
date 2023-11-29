@@ -770,10 +770,13 @@ pre {
 #noteT {
     font-size: 2rem;
     font-weight: bold;
-    margin: 1rem;
+    padding: 1rem;
     outline: none;
+    height: min-content;
+    width: max-content;
     overflow: hidden;
     box-sizing: border-box;
+    user-select: auto;
 }
 
 #deleteNotePrompt {
