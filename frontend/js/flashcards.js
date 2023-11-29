@@ -4,3 +4,9 @@ class Flashcard {
         this.definition = definition;
     }
 }
+
+export default class Flashcards {
+    constructor() {
+        
+    }
+}
