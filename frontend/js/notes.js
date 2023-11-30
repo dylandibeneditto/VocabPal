@@ -149,6 +149,7 @@ export default class Notes {
     }
 
     updateNote() {
+        //implement history reset here
         this.p.innerHTML = this.selectedNote.html;
         this.t.innerHTML = this.selectedNote.title;
     }
