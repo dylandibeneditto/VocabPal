@@ -11,11 +11,13 @@ class Note {
 
 export default class Notes {
     constructor() {
+        this.experience = new Experience()
         this.p = document.querySelector(".ql-editor");
         this.t = document.getElementById("noteT");
         this.notes = [new Note("new note")]
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
+        this.commandEligible = false;
         this.loadNotesList();
         this.initListeners();
         this.selectNote(0);
@@ -105,6 +107,17 @@ export default class Notes {
                 }
             }
         })
+
+        this.p.addEventListener("keydown", (e) => {
+            if (e.key==="="&&this.commandEligible) {
+                this.insertFlashcard()
+                this.commandEligible = false;
+            } else if (e.key=="=") {
+                this.commandEligible = true;
+            } else {
+                this.commandEligible = false;
+            }
+        })
     }
 
 
@@ -138,6 +151,10 @@ export default class Notes {
     updateNote() {
         this.p.innerHTML = this.selectedNote.html;
         this.t.innerHTML = this.selectedNote.title;
+    }
+
+    insertFlashcard() {
+        console.log(this.experience.noteEditor)
     }
 
     updateTitle(newTitle) {

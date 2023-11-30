@@ -38,7 +38,11 @@ export default class Flashcards {
         return result[Math.floor(Math.random() * result.length)]
     }
 
-
+    resetLearn() {
+        for (let i = 0; i < this.flashcards.length; i++) {
+            this.flashcards[i].learnVal = 0
+        }
+    }
 
     //fetches random flashcard
     getRandom() {
