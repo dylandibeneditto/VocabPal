@@ -38,6 +38,8 @@ export default class Flashcards {
         return result[Math.floor(Math.random() * result.length)]
     }
 
+
+
     //fetches random flashcard
     getRandom() {
         return this.flashcards[Math.floor(Math.random()) * this.flashcards.length]
