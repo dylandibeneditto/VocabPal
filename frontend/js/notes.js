@@ -103,23 +103,23 @@ export default class Notes {
 
             if (this.t.innerHTML.length >= 30) {
                 console.log(e.key)
-                if(e.key.length===1) {
+                if (e.key.length === 1) {
                     e.preventDefault()
                 }
             }
         })
 
         this.p.addEventListener("keydown", (e) => {
-            if (e.key==="="&&this.commandEligible) {
+            if (e.key === "=" && this.commandEligible && !this.inFlashcard) {
                 this.insertFlashcard()
                 this.commandEligible = false;
-            } else if (e.key=="=") {
+            } else if (e.key == "=") {
                 this.commandEligible = true;
             } else {
                 this.commandEligible = false;
             }
 
-            if(this.inFlashcard&&e.key==="Escape") {
+            if (this.inFlashcard && e.key === "Escape") {
                 this.exitFlashcard();
             }
         })
@@ -162,22 +162,35 @@ export default class Notes {
     insertFlashcard() {
         let line = this.getWord().anchorNode;
         this.experience.noteEditor.format('code-block', 'true')
+        let newCard = this.experience.flashcards.addFlashcard(line.textContent.split("==")[0], "")
         //line.parentElement.classList.add("flashcardInline")
-        this.inFlashcard = true;
-        line.parentElement.addEventListener('focusout', ()=> {
-            this.parseFlashcard(line.parentElement)
+        line.parentElement.addEventListener("focusout", () => {
+            const t = line.textContent;
+            const tspre = t.split("==")
+            const tspost = ''
+            for (let i = 1; i < tspre.length; i++) {
+                tspost += tspre[i];
+            }
+
+            newCard.term = tspre[0];
+            newCard.definition = tspost;
+            console.log(this.experience.flashcards.flashcards)
         })
+        this.inFlashcard = true;
+
+        console.log(line.parentElement)
+
+
     }
 
     exitFlashcard() {
-        let line = this.getWord().anchorNode;
-        this.experience.noteEditor.format('code-block',false)
+        //let line = this.getWord().anchorNode;
+        this.experience.noteEditor.format('code-block', false)
         this.inFlashcard = false;
     }
 
     parseFlashcard(element) {
-        let t = element.textContent;
-        return t;
+
     }
 
     getWord() {
@@ -188,19 +201,19 @@ export default class Notes {
             sel.collapseToStart();
             sel.modify("move", "backward", "line");
             sel.modify("extend", "forward", "line");
-            
+
             word = sel;
-            
+
             // Restore selection
             sel.removeAllRanges();
             sel.addRange(selectedRange);
-        } else if ( (sel = document.selection) && sel.type != "Control") {
+        } else if ((sel = document.selection) && sel.type != "Control") {
             var range = sel.createRange();
             range.collapse(true);
             range.expand("line");
             word = range.text;
         }
-        
+
         return word;
     }
 

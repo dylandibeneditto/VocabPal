@@ -18,7 +18,9 @@ export default class Flashcards {
 
     //adds flashcard to end of array
     addFlashcard(term, def) {
-        this.flashcards.push(new Flashcard(term, def))
+        const a = new Flashcard(term, def)
+        this.flashcards.push(a)
+        return a;
     }
 
     //expect flashcard class    O(n)
