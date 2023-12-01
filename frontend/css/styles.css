@@ -707,6 +707,7 @@ pre {
     font-family: 'Roboto Mono';
     background-color: var(--b) !important;
     border-radius: .6rem !important;
+    border: 1px solid var(--s)
 }
 
 .ql-snow {

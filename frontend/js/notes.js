@@ -164,12 +164,20 @@ export default class Notes {
         this.experience.noteEditor.format('code-block', 'true')
         //line.parentElement.classList.add("flashcardInline")
         this.inFlashcard = true;
+        line.parentElement.addEventListener('focusout', ()=> {
+            this.parseFlashcard(line.parentElement)
+        })
     }
 
     exitFlashcard() {
         let line = this.getWord().anchorNode;
         this.experience.noteEditor.format('code-block',false)
         this.inFlashcard = false;
+    }
+
+    parseFlashcard(element) {
+        let t = element.textContent;
+        return t;
     }
 
     getWord() {

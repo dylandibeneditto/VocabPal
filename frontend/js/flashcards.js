@@ -1,5 +1,8 @@
+import Experience from './experience.js'
+
 class Flashcard {
     constructor(term, definition) {
+        this.id = new Experience().idGen.newID();
         this.term = term;
         this.definition = definition;
         this.generalMemValue = 0;
