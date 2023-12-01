@@ -17,7 +17,7 @@ export default class Experience {
             modules: {toolbar: [
                 [{ header: [1, 2, false] }],
                 ['bold', 'italic', 'underline'],
-                ['image', 'code-block']
+                ['image', 'code-block'],
             ]},
             theme: 'snow',
         });

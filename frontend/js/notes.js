@@ -18,6 +18,7 @@ export default class Notes {
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
         this.commandEligible = false;
+        this.inFlashcard = false;
         this.loadNotesList();
         this.initListeners();
         this.selectNote(0);
@@ -117,6 +118,10 @@ export default class Notes {
             } else {
                 this.commandEligible = false;
             }
+
+            if(this.inFlashcard&&e.key==="Escape") {
+                this.exitFlashcard();
+            }
         })
     }
 
@@ -155,7 +160,40 @@ export default class Notes {
     }
 
     insertFlashcard() {
-        console.log(this.experience.noteEditor)
+        let line = this.getWord().anchorNode;
+        this.experience.noteEditor.format('code-block', 'true')
+        //line.parentElement.classList.add("flashcardInline")
+        this.inFlashcard = true;
+    }
+
+    exitFlashcard() {
+        let line = this.getWord().anchorNode;
+        this.experience.noteEditor.format('code-block',false)
+        this.inFlashcard = false;
+    }
+
+    getWord() {
+        let sel = ""
+        let word;
+        if (window.getSelection && (sel = window.getSelection()).modify) {
+            var selectedRange = sel.getRangeAt(0);
+            sel.collapseToStart();
+            sel.modify("move", "backward", "line");
+            sel.modify("extend", "forward", "line");
+            
+            word = sel;
+            
+            // Restore selection
+            sel.removeAllRanges();
+            sel.addRange(selectedRange);
+        } else if ( (sel = document.selection) && sel.type != "Control") {
+            var range = sel.createRange();
+            range.collapse(true);
+            range.expand("line");
+            word = range.text;
+        }
+        
+        return word;
     }
 
     updateTitle(newTitle) {
