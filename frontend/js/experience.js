@@ -4,8 +4,8 @@ import Flashcards from './flashcards.js'
 
 export default class Experience {
     static instance;
-    constructor () {
-        if(Experience.instance) {
+    constructor() {
+        if (Experience.instance) {
             return Experience.instance
         }
         Experience.instance = this;
@@ -14,11 +14,13 @@ export default class Experience {
         this.flashcards = new Flashcards();
 
         this.noteEditor = new Quill('#noteEditor', {
-            modules: {toolbar: [
-                [{ header: [1, 2, false] }],
-                ['bold', 'italic', 'underline'],
-                ['image', 'code-block'],
-            ]},
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+                ]
+            },
             theme: 'snow',
         });
         this.notes = new Notes()
