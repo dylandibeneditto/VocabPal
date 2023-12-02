@@ -164,8 +164,8 @@ export default class Notes {
         this.experience.noteEditor.format('code-block', 'true')
         let newCard = this.experience.flashcards.addFlashcard(line.textContent.split("==")[0], "")
         //line.parentElement.classList.add("flashcardInline")
-        line.parentElement.addEventListener("focusout", () => {
-            const t = line.textContent;
+        line.parentElement.addEventListener("keydown", () => {
+            const t = line.parentElement.textContent;
             const tspre = t.split("==")
             const tspost = ''
             for (let i = 1; i < tspre.length; i++) {
@@ -187,10 +187,6 @@ export default class Notes {
         //let line = this.getWord().anchorNode;
         this.experience.noteEditor.format('code-block', false)
         this.inFlashcard = false;
-    }
-
-    parseFlashcard(element) {
-
     }
 
     getWord() {
