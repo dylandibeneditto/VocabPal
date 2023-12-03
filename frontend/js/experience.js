@@ -1,6 +1,7 @@
 import PseudoID from './utils/pseudo-id.js'
 import Notes from './notes.js'
 import Flashcards from './flashcards.js'
+import Themes from './themes.js'
 
 export default class Experience {
     static instance;
@@ -24,6 +25,8 @@ export default class Experience {
             theme: 'snow',
         });
         this.notes = new Notes()
+
+        this.themes = new Themes()
         //this.noteEditor = new NoteEditor(document.getElementById("noteEditor"));
     }
 }
