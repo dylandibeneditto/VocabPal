@@ -19,7 +19,7 @@ export default class Experience {
                 toolbar: [
                     [{ header: [1, 2, false] }],
                     ['bold', 'italic', 'underline'],
-                    ['image', 'code-block'],
+                    ['image'],
                 ]
             },
             theme: 'snow',
