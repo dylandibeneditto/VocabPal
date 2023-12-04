@@ -145,7 +145,7 @@ export default class Notes {
                     tspost += tspre[i];
                 }
     
-                let newCard = flashcardMap[e.target.id]
+                let newCard;
                 newCard.term = tspre[0];
                 newCard.definition = tspost;
                 console.log(this.experience.flashcards.flashcards)
