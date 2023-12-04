@@ -12,12 +12,12 @@ class Note {
 export default class Notes {
     constructor() {
         this.experience = new Experience()
+        this.flashcards = this.experience.flashcards;
         this.p = document.querySelector(".ql-editor");
         this.t = document.getElementById("noteT");
         this.notes = [new Note("new note")]
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
-        this.commandEligible = false;
         this.loadNotesList();
         this.initListeners();
         this.selectNote(0);
@@ -91,8 +91,6 @@ export default class Notes {
             }
         });
 
-        this.updateFlashcardListener();
-
         this.t.addEventListener("focusout", () => {
             this.updateTitle(this.t.innerHTML)
         })
@@ -117,39 +115,9 @@ export default class Notes {
                 this.experience.noteEditor.format('italic', false)
             }
 
-            if (e.key === "=" && this.commandEligible) {
-                this.insertFlashcard()
-                this.commandEligible = false;
-            } else if (e.key == "=") {
-                this.commandEligible = true;
-            } else {
-                this.commandEligible = false;
-            }
+            
 
-            if (e.key === "Escape") {
-                this.exitFlashcard();
-            }
         })
-    }
-
-    updateFlashcardListener() {
-        let nodelist = document.querySelectorAll("pre")
-        
-        for(let i = 0; i < nodelist.length; i++) {
-            nodelist[i].parentElement.addEventListener("focusout", (e)=> {
-                const t = e.target.textContent;
-                let tspre = t.split("==")
-                let tspost = ''
-                for (let i = 1; i < tspre.length; i++) {
-                    tspost += tspre[i];
-                }
-    
-                let newCard = this.experience.flashcards.getById(e.target.id)
-                newCard.term = tspre[0];
-                newCard.definition = tspost;
-                console.log(this.experience.flashcards.flashcards)
-            })
-        }
     }
 
 
@@ -184,45 +152,6 @@ export default class Notes {
         //implement history reset here
         this.p.innerHTML = this.selectedNote.html;
         this.t.innerHTML = this.selectedNote.title;
-    }
-
-    insertFlashcard() {
-        let line = this.getWord().anchorNode;
-        this.experience.noteEditor.format('code-block', 'true')
-        let newCard = this.experience.flashcards.addFlashcard(line.textContent.split("==")[0], "")
-        line.parentElement.id = `f${newCard.id}`
-        //line.parentElement.classList.add("flashcardInline")
-        this.updateFlashcardListener();
-
-    }
-
-    exitFlashcard() {
-        //let line = this.getWord().anchorNode;
-        this.experience.noteEditor.format('code-block', false)
-    }
-
-    getWord() {
-        let sel = ""
-        let word;
-        if (window.getSelection && (sel = window.getSelection()).modify) {
-            var selectedRange = sel.getRangeAt(0);
-            sel.collapseToStart();
-            sel.modify("move", "backward", "line");
-            sel.modify("extend", "forward", "line");
-
-            word = sel;
-
-            // Restore selection
-            sel.removeAllRanges();
-            sel.addRange(selectedRange);
-        } else if ((sel = document.selection) && sel.type != "Control") {
-            var range = sel.createRange();
-            range.collapse(true);
-            range.expand("line");
-            word = range.text;
-        }
-
-        return word;
     }
 
     updateTitle(newTitle) {
