@@ -145,7 +145,7 @@ export default class Notes {
                     tspost += tspre[i];
                 }
     
-                let newCard;
+                let newCard = this.experience.flashcards.getById(e.target.id)
                 newCard.term = tspre[0];
                 newCard.definition = tspost;
                 console.log(this.experience.flashcards.flashcards)

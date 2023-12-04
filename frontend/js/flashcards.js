@@ -23,6 +23,15 @@ export default class Flashcards {
         return a;
     }
 
+    //expects string UUID and returns flashcard variable
+    getById(id) {
+        for(let i=0; i < this.flashcards.length; i++) {
+            if(this.flashcards[i].id === id) {
+                return this.flashcards[i]
+            }
+        }
+    }
+
     //expect flashcard class    O(n)
     getNextLearn(flashcard) {
         flashcard.learnVal++;
