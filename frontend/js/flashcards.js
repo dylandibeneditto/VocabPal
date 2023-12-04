@@ -12,14 +12,15 @@ class Flashcard {
 
 export default class Flashcards {
     constructor() {
-        this.flashcards = [new Flashcard("hello", "1"), new Flashcard("hello", "2"), new Flashcard("hello", "3")];
-        console.log(this.getNextLearn(this.getRandom()))
+        this.flashcards = [];
+        this.flashcardMap = {}
     }
 
-    //adds flashcard to end of array
+    //adds flashcard to end of array and at id of hashmap
     addFlashcard(term, def) {
         const a = new Flashcard(term, def)
         this.flashcards.push(a)
+        this.flashcardMap[a.id] = a
         return a;
     }
 

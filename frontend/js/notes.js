@@ -18,7 +18,6 @@ export default class Notes {
         this.selectedIndex = 0;
         this.selectedNote = this.notes[this.selectedIndex]
         this.commandEligible = false;
-        this.inFlashcard = false;
         this.loadNotesList();
         this.initListeners();
         this.selectNote(0);
@@ -92,6 +91,8 @@ export default class Notes {
             }
         });
 
+        this.updateFlashcardListener();
+
         this.t.addEventListener("focusout", () => {
             this.updateTitle(this.t.innerHTML)
         })
@@ -110,7 +111,14 @@ export default class Notes {
         })
 
         this.p.addEventListener("keydown", (e) => {
-            if (e.key === "=" && this.commandEligible && !this.inFlashcard) {
+            if(e.key=="Enter") {
+                this.experience.noteEditor.format('code-block', false)
+                this.experience.noteEditor.format('bold', false)
+                this.experience.noteEditor.format('italic', false)
+                console.log(this.experience.noteEditor)
+            }
+
+            if (e.key === "=" && this.commandEligible) {
                 this.insertFlashcard()
                 this.commandEligible = false;
             } else if (e.key == "=") {
@@ -119,10 +127,30 @@ export default class Notes {
                 this.commandEligible = false;
             }
 
-            if (this.inFlashcard && e.key === "Escape") {
+            if (e.key === "Escape") {
                 this.exitFlashcard();
             }
         })
+    }
+
+    updateFlashcardListener() {
+        let nodelist = document.querySelectorAll("pre")
+        
+        for(let i = 0; i < nodelist.length; i++) {
+            nodelist[i].addEventListener("focusout", (e)=> {
+                const t = e.target.textContent;
+                const tspre = t.split("==")
+                const tspost = ''
+                for (let i = 1; i < tspre.length; i++) {
+                    tspost += tspre[i];
+                }
+    
+                let newCard = flashcardMap[e.target.id]
+                newCard.term = tspre[0];
+                newCard.definition = tspost;
+                console.log(this.experience.flashcards.flashcards)
+            })
+        }
     }
 
 
@@ -163,30 +191,15 @@ export default class Notes {
         let line = this.getWord().anchorNode;
         this.experience.noteEditor.format('code-block', 'true')
         let newCard = this.experience.flashcards.addFlashcard(line.textContent.split("==")[0], "")
+        line.parentElement.id = `f${newCard.id}`
         //line.parentElement.classList.add("flashcardInline")
-        line.parentElement.addEventListener("keydown", () => {
-            const t = line.parentElement.textContent;
-            const tspre = t.split("==")
-            const tspost = ''
-            for (let i = 1; i < tspre.length; i++) {
-                tspost += tspre[i];
-            }
-
-            newCard.term = tspre[0];
-            newCard.definition = tspost;
-            console.log(this.experience.flashcards.flashcards)
-        })
-        this.inFlashcard = true;
-
-        console.log(line.parentElement)
-
+        this.updateFlashcardListener();
 
     }
 
     exitFlashcard() {
         //let line = this.getWord().anchorNode;
         this.experience.noteEditor.format('code-block', false)
-        this.inFlashcard = false;
     }
 
     getWord() {
