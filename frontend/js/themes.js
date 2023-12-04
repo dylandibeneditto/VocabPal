@@ -13,7 +13,6 @@ export default class Themes {
         })
 
         document.addEventListener("mousedown", (e) => {
-            console.log(e.target)
             if(e.target.parentElement!==this.btn&&e.target.parentElement!==this.selector) {
                 this.selector.style.display = 'none';
                 this.selector.style.opacity = 0;
@@ -21,5 +20,5 @@ export default class Themes {
         })
     }
 
-    
+
 }

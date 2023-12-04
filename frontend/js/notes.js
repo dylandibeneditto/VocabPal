@@ -115,7 +115,6 @@ export default class Notes {
                 this.experience.noteEditor.format('code-block', false)
                 this.experience.noteEditor.format('bold', false)
                 this.experience.noteEditor.format('italic', false)
-                console.log(this.experience.noteEditor)
             }
 
             if (e.key === "=" && this.commandEligible) {
@@ -137,10 +136,10 @@ export default class Notes {
         let nodelist = document.querySelectorAll("pre")
         
         for(let i = 0; i < nodelist.length; i++) {
-            nodelist[i].addEventListener("focusout", (e)=> {
+            nodelist[i].parentElement.addEventListener("focusout", (e)=> {
                 const t = e.target.textContent;
-                const tspre = t.split("==")
-                const tspost = ''
+                let tspre = t.split("==")
+                let tspost = ''
                 for (let i = 1; i < tspre.length; i++) {
                     tspost += tspre[i];
                 }
