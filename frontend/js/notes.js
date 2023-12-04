@@ -115,8 +115,6 @@ export default class Notes {
                 this.experience.noteEditor.format('italic', false)
             }
 
-            
-
         })
     }
 
