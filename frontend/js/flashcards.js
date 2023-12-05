@@ -25,8 +25,8 @@ export default class Flashcards {
 
     //expects string UUID and returns flashcard variable
     getById(id) {
-        for(let i=0; i < this.flashcards.length; i++) {
-            if(this.flashcards[i].id === id) {
+        for (let i = 0; i < this.flashcards.length; i++) {
+            if (this.flashcards[i].id === id) {
                 return this.flashcards[i]
             }
         }

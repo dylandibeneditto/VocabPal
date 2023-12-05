@@ -109,7 +109,7 @@ export default class Notes {
         })
 
         this.p.addEventListener("keydown", (e) => {
-            if(e.key=="Enter") {
+            if (e.key == "Enter") {
                 this.experience.noteEditor.format('code-block', false)
                 this.experience.noteEditor.format('bold', false)
                 this.experience.noteEditor.format('italic', false)
