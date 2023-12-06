@@ -9,15 +9,6 @@ Experience streamlined learning with VocabPal, a sophisticated app designed for 
 - **Quizzes:** Test your knowledge with quizzes designed to reinforce your understanding.
 - **Efficient Learning:** Streamlined design for an efficient and enjoyable learning experience.
 
-## Getting Started 
-
-In order to get started, clone the repo and open the HTML file in a live server (due to the use of modules)
-
-### Prerequisites
-
-- A web browser (most of them should be fine).
-- A code editor or IDE.
-
 ### Installing
 
 1. Clone the repo to your local machine:
