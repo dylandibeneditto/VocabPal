@@ -115,7 +115,17 @@ export default class Notes {
                 this.experience.noteEditor.format('italic', false)
             }
 
+            if(e.key === "=") {
+                this.insertFlashcard()
+            }
+
         })
+
+
+    }
+
+    insertFlashcard() {
+        console.log("hello world")
     }
 
 
