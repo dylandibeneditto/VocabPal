@@ -115,7 +115,7 @@ export default class Notes {
                 this.experience.noteEditor.format('italic', false)
             }
 
-            if(e.key === "=") {
+            if (e.key === "=") {
                 this.insertFlashcard()
             }
 
