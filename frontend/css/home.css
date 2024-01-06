@@ -62,11 +62,13 @@ div#content {
 
 /* HEADER */
 div#header {
-    height: 4rem;
+    height: 3rem;
     background: var(--background-secondary);
     border-bottom: var(--border-weight) var(--border) solid;
+    grid-template-columns: auto 1fr auto;
 }
 
+/* HEADER DIRECTORY */
 div#header-directory {
     color: var(--text2);
     font-size: 1rem;
@@ -74,6 +76,7 @@ div#header-directory {
     margin: auto 1rem auto 1rem;
     align-items: center;
     gap: .8rem;
+    width: fit-content;
 }
 
 div#header-username {
@@ -101,4 +104,28 @@ div.header-divider {
     width: 1.5px;
     height: 1.1rem;
     background: var(--border)
+}
+
+/* HEADER ADD BUTTONS */
+div#add-buttons {
+    width: fit-content;
+    margin: auto 1rem auto 0;
+    gap: .4rem;
+}
+
+div#add-buttons > * {
+    border-radius: var(--border-radius);
+    padding: .4rem .6rem;
+    font-weight: 400;
+    font-size: .9rem;
+    color: var(--text2);
+    border: var(--border-weight) var(--border) solid;
+    background-color: var(--tertiary);
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+div#add-buttons > *:hover {
+    color: var(--text);
+    background-color: var(--secondary);
 }
