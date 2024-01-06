@@ -1,8 +1,3 @@
-import PseudoID from './utils/pseudo-id.js'
-import Notes from './notes.js'
-import Flashcards from './flashcards.js'
-import Themes from './themes.js'
-
 export default class Experience {
     static instance;
     constructor() {
@@ -10,23 +5,6 @@ export default class Experience {
             return Experience.instance
         }
         Experience.instance = this;
-        this.idGen = new PseudoID()
 
-        this.flashcards = new Flashcards();
-
-        this.noteEditor = new Quill('#noteEditor', {
-            modules: {
-                toolbar: [
-                    [{ header: [1, 2, false] }],
-                    ['bold', 'italic', 'underline'],
-                    ['image'],
-                ]
-            },
-            theme: 'snow',
-        });
-        this.notes = new Notes()
-
-        this.themes = new Themes()
-        //this.noteEditor = new NoteEditor(document.getElementById("noteEditor"));
     }
 }
