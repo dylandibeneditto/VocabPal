@@ -21,9 +21,7 @@
 
 /* UNIVERSAL FONT */
 * {
-
     font-family: 'Bricolage Grotesque', Helvetica, sans-serif;
-    color: var(--txt);
     user-select: none;
 }
 

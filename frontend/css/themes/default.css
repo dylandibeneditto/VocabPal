@@ -1,0 +1,21 @@
+:root {
+    --background: rgb(28 28 28);
+    --secondary: rgb(36 36 36);
+    --tertiary: rgb(41 41 41);
+
+    --text: rgb(249 249 249);
+    --text2: rgb(192 192 192);
+    --text3: rgb(136 136 136);
+
+    --border: rgb(72 72 72);
+
+    --icon: rgb(232 232 232);
+    --icon2: rgb(86 86 86);
+    
+    --good: rgb(67 80 71);
+    --alright: rgb(85 76 58);
+    --bad: rgb(81 56 46);
+
+    --border-radius: .6rem;
+    --border-weight: 1px;
+}
