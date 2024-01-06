@@ -38,9 +38,35 @@
 
         </div>
 
-        <div id="sets">
+        <div id="sets" class="flex-v">
 
+            <!-- buttons and dropdowns for sorting and filtering projects-->
+            <div id="organizer-bar" class="grid-h">
 
+                <!-- sorts to get most relevant order for user -->
+                <div id="organize-sorts" class="flex-h">
+                    <div id="organize-recent" class="organizer-item active">Recently Viewed</div>
+                    <div id="organize-alphabetical" class="organizer-item">Alphabetical</div>
+                    <div id="organize-date" class="organizer-item">Recently Created</div>
+                </div>
+
+                <div></div>
+
+                <!-- filters to get most relevant types of files -->
+                <div id="organize-filters" class="flex-h">
+                    <div id="organize-notes" class="organizer-item active">Notes</div>
+                    <div id="organize-folders" class="organizer-item">Folders</div>
+                </div>
+
+                <div></div>
+
+                <!-- toggle layouts for the home page -->
+                <div id="organize-layouts" class="flex-h">
+                    <span id="organize-grid-layout" class="material-symbols-rounded organizer-item active">grid_view</span>
+                    <span id="organize-list-layout" class="material-symbols-rounded organizer-item">table_rows</span>
+                </div>
+
+            </div>
 
         </div>
 
