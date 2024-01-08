@@ -1,0 +1,9 @@
+#note-editor {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    width: 70vw;
+    height: 70vh;
+    background: var(--tertiary);
+    transform: translate(-50%, -50%);
+}
